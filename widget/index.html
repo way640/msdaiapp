@@ -682,19 +682,19 @@ $(function () {
 </body>           
 </html> 
 <script type="text/javascript">
-// $(document).ready(function(){
-//     $.ajax
-//     ({
-//         url: "http://119.23.46.11/investment/lenders",
-//         dataType: "jsonp",
-//         jsonp: "jsoncallback",
-//         success: function(data){
-//          alert( "Data Saved: " + data );
-//          // $.each(data,function(k,v){
+$(document).ready(function(){
+    $.ajax
+    ({
+        url: "http://119.23.46.11/investment/lenders",
+        dataType: "jsonp",
+        jsonp: "jsoncallback",
+        success: function(data){
+         alert( "Data Saved: " + data );
+         // $.each(data,function(k,v){
 
-//         }
-//     })
-// })
+        }
+    })
+})
 $(function(){
     $.ajax({
         url:"http://119.23.46.11/user/backuserinfo",
