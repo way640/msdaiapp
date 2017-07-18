@@ -1,0 +1,68 @@
+body{ background:#FFF;}
+.hs_bj{background: #f2f2f2;}
+/*职位分类*/
+.position_box { margin-bottom: 0.5rem; }
+.title_bt_zw { font-size: 0.7rem; color: #666; overflow: hidden; font-weight: 400; padding: 0.4rem 0; margin-top: 0.5rem; margin-bottom: 0.25rem; }
+.title_bt_zw span { border-left: 0.1rem solid #FE9F07; display: block; height: 0.7rem; line-height: 0.7rem; padding-left: 0.25rem; cursor: pointer; }
+.position_list { height: auto; overflow: hidden; }
+.position_list li { width: 50%; float: left; background: #FFF; border-bottom: 1px solid #f2f2f2; }
+.position_list li .erji_dh { font-size: 0.6rem; display: block; padding: 0.5rem 0 0.5rem 0.5rem; font-weight: 400; border-right: 1px solid #f2f2f2; color: #333; }
+.position_list .sjml_dh { clear: left; height: auto; position: relative; }
+.position_list .sjml_dh a { width: 50%; display: block; float: left; background: #00B4C9; border-bottom: 1px solid #f2f2f2; }
+.position_list .sjml_dh a strong, .position_list .sjml_dh a span { font-size: 0.5rem; display: block; padding: 0.5rem 0 0.5rem 1rem; font-weight: 400; border-right: 1px solid #f2f2f2; color: #fff; }
+/*箭头*/
+.position_list .sjml_dh i.jt { display: block; width: 0; height: 0; border-width: 0 0.5rem 0.5rem; border-style: solid; border-color: transparent transparent #00B4C9; position: absolute; top: -0.5rem; left: 10%;/* 三角形居中显示 */ margin-left: -0.5rem;/* 三角形居中显示 */ }
+.position_list .sjml_dh:after { content: "."; height: 0; visibility: hidden; display: block; clear: both; }/*清除浮动*/
+/*职位列表*/
+.position_list_box { background: #FFF; }
+.sx_position_xx li { float: left; width: 33.33%; text-align: center; font-size: 0.6rem; color: #666; padding: 0.4rem 0; }
+.sx_position_xx li .sxdt_title { display: block; border-right: 1px solid #ddd; }
+.sx_position_xx li:last-child .sxdt_title { border-right: none; }
+/*职位详情*/
+.position_detail_box { background: #FFF; padding: 0.25rem 0; }
+.position_detail_box .wntj_list li { padding-bottom: 0.25rem; }
+.wntj_list li p.gsdd_wenz { color: #999; margin-top: 0.25rem; }
+.wntj_list li .zwxqiu_wez { margin-bottom: 0.25rem; font-size: 0.6rem; color: #333; }
+.wntj_list li .zwxqiu_wez span { padding-right: 0.7rem; }
+.wntj_list li .zwxqiu_wez i { color: #666; padding-right: 0.1rem; }
+.zwxq_gs_info { display: block; color: #999; padding: 0.5rem 0; }
+.zwxq_gs_info .gs_logo { float: left; width: 2.4rem; height: 2.4rem; border: 1px solid #ddd; }
+.zwxq_gs_info .gsname_info { float: left; width: 10.5rem; font-size: 0.6rem; line-height: 1.2rem; margin-left: 0.25rem; }
+.zwxq_gs_info .gsname_info p { color: #666; }
+.zwxq_gs_info .gsname_info p .gs_zm_icon { font-size: 0.8rem; color: #85C860; padding-left: 0.1rem; }
+.zwxq_gs_info .gsname_info span { font-size: 0.55rem; }
+.zwxq_gs_info .right_jt i { color: #666; font-size: 0.8rem; line-height: 2.5rem; margin-right: 0.25rem; }
+.position_detail_box .jt_but { font-size: 0.6rem; color: #3D99FF; text-decoration: underline; padding-right: 0.5rem; }
+.zwzp_xxxx_list { line-height: 1rem; font-size: 0.6rem; color: #333; padding-right: 0.5rem; margin-bottom: 0.8rem; }
+.zwzp_xxxx_list strong { color: #999; }
+/*投递简历*/
+.sq_lx_bum_fdbox { width: 100%; background: #fff; position: fixed; z-index: 999; bottom: 0; left: 0; overflow: hidden; /*border: 1px solid #cfcfcf;*/ }
+.sq_lx_bum_fdbox ul { width: 100%; height: auto; overflow: hidden; }
+.sq_lx_bum_fdbox ul li { float: left; width: 33.33%; padding: 0.2rem 0; font-size: 0.6rem; text-align: center; line-height: 1.6rem; color: #666; }
+.sq_lx_bum_fdbox ul li a { display: block; font-size: 0.6rem; text-align: center; width: 90%; display: block; color: #fff; background: #00B4C9; line-height: 1.6rem; height: 1.6rem; border-radius: 0.25rem; }
+.sq_lx_bum_fdbox ul li a i { color: #fff; padding-right: 0.25rem; }
+.sq_lx_bum_fdboxheight { height: 2rem; background: #FFF; }
+.sq_lx_bum_fdbox .scale:after { content: ""; position: absolute; top: 0px; left: 0px; right: 0px; border-bottom: 1px solid #ddd; -webkit-transform: scaleY(.5); -webkit-transform-origin: 0 0; }
+/*.sq_lx_bum_fdbox .scale:before { content: ""; position: absolute; top: 0px; left: 0px; right: 0px; border-top: 1px solid #ddd; -webkit-transform: scaleY(.5); -webkit-transform-origin: 0 0; }*/
+ 
+/*公司详情*/
+.gsxx_map_info { display: block; color: #666; line-height: 2.1rem; }
+.gsxx_map_info .gsname_info { float: left; width: 12.9rem; font-size: 0.6rem; }
+.gsjj_xxxx_list { line-height: 1rem; font-size: 0.6rem; color: #333; padding-right: 0.5rem; margin-top: 0.8rem; }
+.gsjj_xxxx_list strong { color: #999; }
+.gsjop_list_box { background: #FFF; padding-top: 0.6rem; }
+.gsjob_title { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; margin-bottom: 0.25rem; }
+.gsjob_title li { float: left; width: 50%; text-align: center; font-size: 0.6rem; color: #666; padding: 0.5rem 0; }
+.gsjob_title li a { display: block; }
+.gsjob_title li.on { background: #00B4C9; color: #fff; }
+.gsjob_title li.on a { color: #fff; }
+.wntj_list li h4 i.zph_tb { width: 0.7rem; text-align: center; font-weight: 400; line-height: 0.7rem; display: inline-block; border: 1px solid #3D99FF; height: 0.7rem; font-size: 0.5rem; color: #3D99FF; border-radius: 50%; margin-left: 0.5rem; }
+/*资讯通*/
+.zxt_list_title li { position: relative; z-index: 2; }
+.sx_position_xx li.on { border-bottom: 2px solid #FE9F07; }
+.wntj_list li .ryu_time_box { height: auto; overflow: hidden; color: #999; }
+.wntj_list li h4.zx_title { font-size: 0.6rem; line-height: 1rem; }
+.zxxq_ny_box { background: #FFF; padding: 0.5rem; }
+.zxxq_ny_title { font-size: 0.7rem; margin-bottom: 0.6rem; color: #333; }
+.zxxq_ny { font-size: 0.6rem; line-height: 1rem; color: #333; margin-top: 0.7rem; }
+.zxxq_ny p { margin-bottom: 0.5rem; }

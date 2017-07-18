@@ -8,7 +8,6 @@
 * http://jquery.org/license
 *
 */
-function $(){};
 
 (function ( root, doc, factory ) {
 	if ( typeof define === "function" && define.amd ) {
