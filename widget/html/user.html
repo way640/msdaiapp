@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>信富平台</title>
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/xinfugai.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script>
+$(function(){
+    
+    $.ajax({
+        type:'GET',
+        url:"http://119.23.46.11/user/backuserinfo",
+        data:'',
+        dataType:'jsonp',
+        jsonp: "jsoncallback",
+        success:function(msg){
+
+            if(msg.status == 1){
+
+                console.log(msg)
+            }else{
+
+                alert('页面加载失败，请重试！')
+            }
+        }
+    })
+    
+
+    //$.get('http://119.23.46.11/user/backuserinfo', function (res) { console.log(res); }, 'json'); 
+})
+</script>
+
+
+
+</head>
+
+
+
+
+<body>
+<!--top-->
+<div class="top">
+	<div class="box">
+        <a href="html/index.html" class="return"><img src="image/return.png"></a>
+        我的账户    
+    </div>
+</div>
+<div class="user">
+	<div class="box">
+    <a href="html/info.html">
+    	<img src="image/tou.png">
+        <div class="us_yong">
+        	<span>欢迎您，莉莉<img src="image/vipdbj.png"/ style="width:20px;height:20px;float:left;padding:0;margin-top:5px; margin-right:0; margin-bottom:0;"></span>
+            <span>账户总额：￥12133132</span>
+            
+        </div>
+    </a>
+    <div class="vipczjdu">
+    	<!--top-->
+        <div class="vipdu_t">
+        	<span>
+            	<p></p>
+            </span>￥
+            <em>50000</em>
+            
+        </div>
+        <!--bottom-->
+        <div class="vipdu_b">
+        	<span>代收金额：</span>
+       		<i>￥</i>
+        	<i class="nans">2000</i>
+            <span>距离成为vip还差：</span>
+            <i>￥</i>
+            <b></b>
+        </div>
+        <script>
+ 		var n=$(".nans").html()
+ 		var l=50000
+ 		var pp=l-n
+ 		$(".vipdu_b b").text(pp)
+ 		var p=n/l*100+'%';
+ 		$(".vipdu_t span p").css({width:p})
+		</script>
+    </div>
+    <div class="us_ke">
+        	<span style="border-right:1px solid #dcdcdc;">
+            	<i>可用余额（元）</i>
+                <em>134543</em>
+            </span>
+            <span>
+            	<i>冻结总额（元）</i>
+                <em>134543</em>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="us_rec">
+    <span><a href="recharge.html">充值</a></span>
+    <span><a href="withdraw.html" style="background:#fff; border:1px solid #29a7e2; color:#29a7e2;">提现</a></span>
+</div>
+<!--微信部分-->
+<div class="xinfuer_t">
+	<a href="#">
+    	<b><img src="image/jkjl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/hqlc_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/dqlc_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/sbtz_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/zqzr_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/zjtj_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/jyjl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/zdtb_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/yqjl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/hbgl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/jfgl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/cjjl_t.png"/></b>
+    </a>
+    <a href="liyijisuanqi.html">
+    	<b><img src="image/syjsq_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/tgmx_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/jjjl_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/xycj_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/yqm_t.png"/></b>
+    </a>
+    <a href="#">
+    	<b><img src="image/ewm_t.png"/></b>
+    </a>
+</div>
+<script>
+var this_w=$(".xinfuer_t").width()/3+'px';
+$(".xinfuer_t a").css({height:this_w,width:this_w});
+</script>
+<!--占空部分-->
+<div class="zkdbfyi_f" style="width:100%; height:52px;"></div>
+<!--底部导航栏-->
+<div class="footerdhl_f">
+	<a href="index.html">
+    	<b><img src="image/zhuye.png"/></b>
+        <p>首页</p>
+    </a>
+    <a href="Investment list.html">
+    	<b><img src="image/touzi.png"/></b>
+        <p>投资</p>
+    </a>
+    <a href="user.html">
+    	<b class="movek_f"><img src="image/grzx.png"/></b>
+        <p>账户</p>
+    </a>
+    <a href="more.html">
+    	<b><img src="image/mores.png"/></b>
+        <p>更多</p>
+    </a>
+</div>
+
+<!--空格-->
+
+</body>
+</html>	
+    
+    
+
+
+
+
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+        
+
