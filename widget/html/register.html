@@ -21,18 +21,17 @@
     </div>
 </div>
 
-
 <div class="login_lo" style="margin-top:56px;">
 	<div class="box">
     	<div class="lo_1 lo_2">
         	<span>手机号</span>
-            <input type="text" name="address" size="60" maxlength="60" style="color:#ccc" value="请输入手机号" onfocus="if(this.value=='请输入手机号'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入手机号'){this.value='请输入手机号';this.style.color='#ccc';}">
+            <input type="text" id="address" size="60" maxlength="60" style="color:#ccc" value="请输入手机号" onfocus="if(this.value=='请输入手机号'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入手机号'){this.value='请输入手机号';this.style.color='#ccc';}">
         </div>
         <div class="lo_1 lo_2">
         	<span>验证码</span>
-            <input type="text" name="verifi" size="60" maxlength="60" style="color:#ccc" value="请输入验证码" onfocus="if(this.value=='请输入验证码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入验证码'){this.value='请输入验证码';this.style.color='#ccc';}">
+            <input type="text" id="verifi" size="60" maxlength="60" style="color:#ccc" value="请输入验证码" onfocus="if(this.value=='请输入验证码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入验证码'){this.value='请输入验证码';this.style.color='#ccc';}">
             <div class="yan">
-                    <input type="button" id="btn" class="btn_mfyzm" value="获取验证码" />
+             <input type="button" id="btn" class="btn_mfyzm" value="获取验证码" />
 <script type="text/javascript">
 var wait=60;
 document.getElementById("btn").disabled = false;   
@@ -57,33 +56,40 @@ document.getElementById("btn").onclick=function(){time(this);}
     </div>
         <div class="lo_1 lo_2">
         	<span>密码</span>
-            <input type="text" name="pass" size="60" maxlength="60" style="color:#ccc" value="请输入密码" onfocus="if(this.value=='请输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#ccc';}">
+            <input type="text" id="pass" size="60" maxlength="60" style="color:#ccc" value="请输入密码" onfocus="if(this.value=='请输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#ccc';}">
         </div>
         <div class="lo_1 lo_2">
         	<span>确认密码</span>
-            <input type="text" name="o_pass" size="60" maxlength="60" style="color:#ccc" value="请再一次输入密码" onfocus="if(this.value=='请再一次输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请再一次输入密码'){this.value='请再一次输入密码';this.style.color='#ccc';}">
+            <input type="text" id="o_pass" size="60" maxlength="60" style="color:#ccc" value="请再一次输入密码" onfocus="if(this.value=='请再一次输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请再一次输入密码'){this.value='请再一次输入密码';this.style.color='#ccc';}">
         </div>
-        <a href="#" class="lo_login">注册</a>
+        <a href="javascript:void(0);" class="lo_login">注册</a>
     </div>
 </div>
+
 </body>
 <script src="js/jquery-1.11.0.min.js"></script>
 <script>
     $(function(){
-        $.ajax({
-            url:'http://119.23.46.11/user/applogindo',
-            type:'GET',
-            data: {
-                address: $("address").val(),
-                invitat: $("invitat").val(),
-                pass: $("pass").val(),
-                o_pass: $("o_pass").val(),
-                verifi:$("verifi").val()
-            },
-            dataType:'jsonp',
-            success:function(data){
-                alert(data);
-            }
+        $('.lo_login').click(function(){
+            $.ajax({
+                url:'http://119.23.46.11/user/applogindo',
+                type:'GET',
+                data: {
+                    address: $("#address").val(),
+                    invitat: $("#invitat").val(),
+                    pass: $("#pass").val(),
+                    o_pass: $("#o_pass").val(),
+                    verifi:$("#verifi").val()
+                },
+                dataType:'json',
+                success:function(data){
+                  if(data.status == 1){
+                        location.href='index.html';
+                  }else{
+                     alert(data.msg)
+                  }
+                }
+            })
         })
     });
 </script>
