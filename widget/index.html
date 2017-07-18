@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="css/style1.css">
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/jquery.mobile-1.4.5.js"></script>
 <script src="js/public.js"></script>
 <!--banner-->
 <link rel="stylesheet" type="text/css" href="css/responsiveslides.css">
@@ -21,26 +20,22 @@
 	<div class="top_f_in">
     	<a href="login.html" class="login_f">登录</a>
         <a href="register.html" class="register_f">注册</a>
-        <img src="images/logo3.png"/>
+        <img src="image/logo.png"/>
     </div>
 </div>
 
 <!--banner-->
 <div class="callbacks_container">
 	<ul class="rslides" id="slider">
-		<li><a href="banner_xqy.html"><img src="images/pic_home_slider_1.jpg"></a></li>
-		<li><a href="banner_xqy.html"><img src="images/pic_home_slider_2.jpg"></a></li>
-		<li><a href="banner_xqy.html"><img src="images/pic_home_slider_3.jpg"></a></li>
-		<li><a href="banner_xqy.html"><img src="images/pic_home_slider_4.jpg"></a></li>
-        <li><a href="banner_xqy.html"><img src="images/pic_home_slider_4.jpg"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_1.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_2.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_3.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png"></a></li>
+        <li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png"></a></li>
     </ul>
 </div>
 
 <script type="text/javascript">
-function $(){
-
-};
-
 $(function () {
 	// Slideshow 
 	$("#slider").responsiveSlides({
@@ -58,7 +53,7 @@ $(function () {
 <!--公告-->
 <div class="notice_f">
 	<div class="notice_f_in">
-    	<img src="images/gaogao.png"/>
+    	<img src="image/gaogao.png"/>
         <ul>
         	<li><a href="#">公告1今日信富微信端上线</a></li>
             <li><a href="#">公告2今日信富微信端上线</a></li>
@@ -68,7 +63,7 @@ $(function () {
 </div>
 <script>
 	var q=0
-	// var f=$(".notice_f_in ul li").length
+	var f=$(".notice_f_in ul li").length
 	$(".notice_f_in ul li").first().css({display:"block"}).siblings().css({display:"none"});
 	function ggds(){
 		q++
@@ -95,85 +90,81 @@ $(function () {
         </li>
     </ul>
 </div>
-<!--视频链接-->
-<div class="video_f">
-	<a class="video_f_in">进入理财教室</a>
-</div>
 <!--推广标标题-->
 <div class="novice_f">
-	<div class="novice_f_in">
-    	<img src="images/tuigpng.png"/>
+    <div class="novice_f_in">
+        <img src="image/tuigpng.png"/>
         <h2>快乐推广标</h2>
     </div>
 </div>
 <!--推广标-->
 <div class="novice_zs_f">
-	<div class="novice_zs_f_in">
+    <div class="novice_zs_f_in">
     <!--left-->
-        <div class="novice_zs_f_in_l" style="background:url(images/013b1ec6df24.png) no-repeat center; background-size:cover;">
-        	<!--top-->
+        <div class="novice_zs_f_in_l" style="background:url(image/013b1ec6df24.png) no-repeat center; background-size:cover;">
+            <!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<span>敬请期待</span>
+                <span>敬请期待</span>
             </div>
             <!--bottom-->
             <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f" style="width:33%">
-                    	<em>12.00%</em>
+                <ul>
+                    <li class="mark1_f" style="width:33%">
+                        <em>12.00%</em>
                         <p>年利率</p>
                     </li>
                     <li class="mark2_f" style="width:33%">
-                    	<em>3<font>个月</font></em>
+                        <em>3<font>个月</font></em>
                         <p>期限</p>
                     </li>
                     <li class="mark3_f" style="width:33%">
-                    	<em><font>￥</font>20.10<font>万</font></em>
+                        <em><font>￥</font>20.10<font>万</font></em>
                         <p>起投金额</p>
                     </li>
                 </ul>
             </div>
         </div>
     <!--right-->
-    	<a href="Investment details.html"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        <a href="Investment details.html"><div class="novice_zs_f_in_r">
+            <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
 </div>
 <!--新手专区标题-->
 <div class="novice_f">
-	<div class="novice_f_in">
-    	<img src="images/cainiao.png"/>
+    <div class="novice_f_in">
+        <img src="image/cainiao.png"/>
         <h2>新手专享</h2>
     </div>
 </div>
 <!--新手专享-->
 <div class="novice_zs_f">
-	<div class="novice_zs_f_in">
+    <div class="novice_zs_f_in">
     <!--left-->
         <div class="novice_zs_f_in_l">
-        	<!--top-->
+            <!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+                <img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
             <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
+                <ul>
+                    <li class="mark1_f">
+                        <em>12.00%</em>
                         <p>年利率</p>
                     </li>
                     <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
+                        <em>3<font>个月</font></em>
                         <p>期限</p>
                     </li>
                     <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
+                        <em><font>￥</font>20.10<font>万</font></em>
                         <p>投资金额</p>
                     </li>
                     <li class="mark4_f">
-                    	<span>
-                        	<img src="images/redbl.png"/ style="height:50%;">
+                        <span>
+                            <img src="image/redbl.png"/ style="height:50%;">
                             <p>50%</p>
                         </span>
                     </li>
@@ -181,15 +172,15 @@ $(function () {
             </div>
         </div>
     <!--right-->
-    	<a href="Investment details.html"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        <a href="Investment details.html"><div class="novice_zs_f_in_r">
+            <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
 </div>
 <!--1灵活收益&理财计划&散标专区&债权转让-->
 <div class="sizdzh_f">
 	<ul>
-       <li class="addys_f">灵活收益</li>
+       <li class="addys_f">放款列表</li>
        <li>理财计划</li>
        <li>散标专区</li>
        <li>债券转让</li>
@@ -207,7 +198,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao.png"/>
+            	<img src="image/biao.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -227,7 +218,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:50%;">
+                        	<img src="image/redbl.png"/ style="height:50%;">
                             <p>50%</p>
                         </span>
                     </li>
@@ -236,7 +227,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -245,7 +236,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao3.png"/>
+            	<img src="image/biao3.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -265,7 +256,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:50%;">
+                        	<img src="image/redbl.png"/ style="height:50%;">
                             <p>50%</p>
                         </span>
                     </li>
@@ -274,7 +265,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -283,7 +274,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao4.png"/>
+            	<img src="image/biao4.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -303,7 +294,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:50%;">
+                        	<img src="image/redbl.png"/ style="height:50%;">
                             <p>50%</p>
                         </span>
                     </li>
@@ -312,7 +303,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     	</div>
@@ -324,7 +315,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -344,7 +335,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:60%;">
+                        	<img src="image/redbl.png"/ style="height:60%;">
                             <p>60%</p>
                         </span>
                     </li>
@@ -353,7 +344,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -362,7 +353,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -382,7 +373,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:60%;">
+                        	<img src="image/redbl.png"/ style="height:60%;">
                             <p>60%</p>
                         </span>
                     </li>
@@ -391,7 +382,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -400,7 +391,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -420,7 +411,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:60%;">
+                        	<img src="image/redbl.png"/ style="height:60%;">
                             <p>60%</p>
                         </span>
                     </li>
@@ -429,7 +420,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
         </div>
@@ -441,7 +432,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -461,7 +452,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:70%;">
+                        	<img src="image/redbl.png"/ style="height:70%;">
                             <p>80%</p>
                         </span>
                     </li>
@@ -470,7 +461,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -479,7 +470,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -499,7 +490,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:70%;">
+                        	<img src="image/redbl.png"/ style="height:70%;">
                             <p>80%</p>
                         </span>
                     </li>
@@ -508,7 +499,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -517,7 +508,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -537,7 +528,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:70%;">
+                        	<img src="image/redbl.png"/ style="height:70%;">
                             <p>80%</p>
                         </span>
                     </li>
@@ -546,7 +537,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
         </div>
@@ -558,7 +549,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -578,7 +569,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:80%;">
+                        	<img src="image/redbl.png"/ style="height:80%;">
                             <p>90%</p>
                         </span>
                     </li>
@@ -587,7 +578,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -596,7 +587,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -616,7 +607,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:80%;">
+                        	<img src="image/redbl.png"/ style="height:80%;">
                             <p>90%</p>
                         </span>
                     </li>
@@ -625,7 +616,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
     		<!--一条开始-->
@@ -634,7 +625,7 @@ $(function () {
         <div class="novice_zs_f_in_l">
         	<!--top-->
             <div class="novice_zs_f_in_l_top">
-            	<img src="images/biao5.png"/>
+            	<img src="image/biao5.png"/>
                 <span>测试标不要投</span>
             </div>
             <!--bottom-->
@@ -654,7 +645,7 @@ $(function () {
                     </li>
                     <li class="mark4_f">
                     	<span>
-                        	<img src="images/redbl.png"/ style="height:80%;">
+                        	<img src="image/redbl.png"/ style="height:80%;">
                             <p>90%</p>
                         </span>
                     </li>
@@ -663,7 +654,7 @@ $(function () {
         </div>
     <!--right-->
     	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(images/lijitoubiao.png) no-repeat center"></span>
+        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
         </div>
@@ -672,46 +663,45 @@ $(function () {
 <!--底部导航栏-->
 <div class="footerdhl_f">
 	<a href="index.html">
-    	<b class="movek_f"><img src="images/zhuye.png"/></b>
+    	<b class="movek_f"><img src="image/zhuye.png"/></b>
         <p>首页</p>
     </a>
     <a href="Investment list.html">
-    	<b><img src="images/touzi.png"/></b>
+    	<b><img src="image/touzi.png"/></b>
         <p>投资</p>
     </a>
     <a href="user.html">
-    	<b><img src="images/grzx.png"/></b>
+    	<b><img src="image/grzx.png"/></b>
         <p>账户</p>
     </a>
     <a href="more.html">
-    	<b><img src="images/mores.png"/></b>
+    	<b><img src="image/mores.png"/></b>
         <p>更多</p>
     </a>
 </div>
-</body>    
-            
-        
-</html>    
-  
-    		    
-                
-	 
-					
-                
+</body>           
+</html> 
+<script type="text/javascript">
+// $(document).ready(function(){
+//     $.ajax
+//     ({
+//         url: "http://119.23.46.11/investment/lenders",
+//         dataType: "jsonp",
+//         jsonp: "jsoncallback",
+//         success: function(data){
+//          alert( "Data Saved: " + data );
+//          // $.each(data,function(k,v){
 
-			
-		   
-	
-         	
-                    
-    
-        
-    	
-    
-
-           
-     
-                    
-                
-                   
-                 
+//         }
+//     })
+// })
+$(function(){
+    $.ajax({
+        url:"http://119.23.46.11/user/backuserinfo",
+        dataType:'json',
+        success:function(msg){
+             alert( "Data Saved: " + msg );
+        }
+    })
+})
+</script>
