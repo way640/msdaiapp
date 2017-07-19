@@ -15,29 +15,29 @@
 <!--项目详情-->
 <div class="projectd_f">
 	<div class="projectd_f_in">
-    	<a href="html/Investment list.html"><img src="image/jian.png"/></a>
+    	<a href="html/Investment_list.html"><img src="image/jian.png"/></a>
         项目详情
     </div>
 </div>
 <!--2占固定定位的块-->
 <div class="occupy_f2"></div>
 <!--内容-->
-<div class="neirbg_f">
-	<div class="neirbg_f_in">
-    	<h2>韩女士借款18.7万元 合同20161122-A</h2>
-        <div class="twobf_f">
-        	<ul>
-            	<li>
-                	<em>年化收益</em>
-                    <p>10.00<font>%</font></p>
-                </li>
-                <li>
-                	<em>投资期限</em>
-                    <p>3<font>个月</font></p>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class="neirbg_f" id="nei">
+	<!--<div class="neirbg_f_in">-->
+    	<!--<h2>韩女士借款18.7万元 合同20161122-A</h2>-->
+        <!--<div class="twobf_f">-->
+        	<!--<ul>-->
+            	<!--<li>-->
+                	<!--<em>年化收益</em>-->
+                    <!--<p>10.00<font>%</font></p>-->
+                <!--</li>-->
+                <!--<li>-->
+                	<!--<em>投资期限</em>-->
+                    <!--<p>3<font>个月</font></p>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>
 <!--投资金额和进度-->
 <div class="tozije_f">
@@ -140,6 +140,7 @@
         </div>
     </div>
 </div>
+</div>
 <!--关于上面图片的遮罩层-->
 <div class="mask_f">
 	<!--top-->
@@ -188,20 +189,44 @@ $(".mask_f_b").click(function(){
 	$(".mask_f").css({display:"none"})
 	});
 
-   // 放款人信息
-   $(document).ready(function () {
-       $.ajax({
-           url:"http://119.23.46.11/investment/lenders",
-//           type:"GET",
-           dataType : "jsonp",
-           jsonp:'jsoncallback',
-           success:function (data) {
-               alert(data);
-           }
-       })
+       jQuery(document).ready(function(){
+           //获取id值
+               var src = window.location.href;
+               var I = src.substr(src.indexOf("?id=") + 4).length;
+               var T = src.indexOf("?id=");
+               if (0 >= T) return "";
+               if (I == src.length) return -1;
+               var ur = src.substr(src.indexOf("?id=") + 4);
+
+           var url = "http://119.23.46.11/investment/lenders";
+           $.ajax({
+               type: "get",
+               async: false,
+               url: url,
+               dataType: "jsonp",
+               jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+               jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+               data:{
+                   "id":ur
+               },
+               success: function(data){
+                   var str='';
+                   $.each(data,function(k,v){
+                       str +='<div class="neirbg_f_in"><h2>合同'+v.lenging_no+'</h2>';
+                       str +='<div class="twobf_f"><ul><li>';
+                       str +='<em>年化收益</em><p>'+v.lenging_interest+'</p></li>';
+                       str +='<li><em>投资期限</em><p>3<font>个月</font></p></li></ul></div></div>';
+                   });
+                   $('#nei').html(str);
+               },
+               error: function(){
+                   alert('fail');
+               }
+           });
+       });
 </script>
 <!--立即投标-->
-<a href="Immediate investment.html" class="lijitoubiaocx_f">立即投标</a>
+<a href="WWW/msdaiapp/widget/html/Immediate_investment.html" class="lijitoubiaocx_f">立即投标</a>
 </body>
 </html>      
       
