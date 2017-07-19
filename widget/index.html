@@ -12,53 +12,51 @@
 <!--banner-->
 <link rel="stylesheet" type="text/css" href="css/responsiveslides.css">
 <script src="js/responsiveslides.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.touchSlide.js" ></script>
+<link rel="stylesheet" type="text/css" href="css/css.css">
+
 </head>
 
 <body>
 <!--top-->
 <div class="top_f">
 	<div class="top_f_in">
-            <a href="html/login.html" class="login_f">登录</a>
-
+        <a href="html/login.html" class="login_f">登录</a>
         <a href="html/register.html" class="register_f">注册</a>
         <img src="image/logo.png"/>
     </div>
 </div>
 
 <!--banner-->
-<div class="callbacks_container">
-	<ul class="rslides" id="slider">
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_1.png"></a></li>
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_2.png"></a></li>
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_3.png"></a></li>
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png"></a></li>
-        <li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png"></a></li>
+<div class="callbacks_container" id="slider">
+	<ul class="rslides" >
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_1.png" data-src="image/pic_home_slider_1.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_2.png" data-src="image/pic_home_slider_2.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_3.png" data-src="image/pic_home_slider_3.png"></a></li>
+		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png" data-src="image/pic_home_slider_4.png"></a></li>
     </ul>
+    <div class="num" style='top:140px; display:none'></div>
 </div>
 
 <script type="text/javascript">
-$(function () {
-	// Slideshow
-	$("#slider").responsiveSlides({
-		auto: true,
-		pager: false,
-		nav: true,
-		speed: 500,
-		timeout:4000,
-		pager: true,
-		pauseControls: true,
-		namespace: "callbacks"
-	});
-});
+
+$(function(){
+    $("#slider").touchSlide({lazyLoad:true});
+
+})
 </script>
+
+
+
 <!--公告-->
 <div class="notice_f">
 	<div class="notice_f_in">
     	<img src="image/gaogao.png"/>
         <ul>
-        	<li><a href="#">公告1今日信富微信端上线</a></li>
-            <li><a href="#">公告2今日信富微信端上线</a></li>
-            <li><a href="#">公告3今日信富微信端上线</a></li>
+        	<li><a href="#">公告1：7月25号马上贷APP正式上线</a></li>
+            <li><a href="#">公告2: 7月18号马上贷开始开发APP</a></li>
+            <li><a href="html/about.html">公告3: 公司简介</a></li>
         </ul>
     </div>
 </div>
@@ -74,21 +72,13 @@ $(function () {
 		}
 	setInterval(ggds,4000)
 </script>
+
 <!--数据-->
 <div class="data_f">
 	<ul>
-    	<li>
-        	<em>321,103,540</em>
-            <span>用户累计投资</span>
-        </li>
-        <li>
-        	<em>321,103,540</em>
-            <span>用户累计收益</span>
-        </li>
-        <li>
-        	<em>321,103,540</em>
-            <span>注册用户数量</span>
-        </li>
+        <div id='databox'>
+
+        </div>
     </ul>
 </div>
 <!--推广标标题-->
@@ -179,134 +169,28 @@ $(function () {
     </div>
 </div>
 <!--1灵活收益&理财计划&散标专区&债权转让-->
+<div class="novice_f">
+    <div class="novice_f_in">
+        <img src="image/cainiao.png"/>
+        <h2>放款列表</h2>
+    </div>
+</div>
 <div class="sizdzh_f">
 	<ul>
-       <li class="addys_f">放款列表</li>
-       <li>理财计划</li>
-       <li>散标专区</li>
-       <li>债券转让</li>
+       <li class="addys_f">土豪列表</li>
+       <li>最新放款</li>
+       <li>利率最低</li>
+       <li>已完放款</li>
     </ul>
 </div>
 <!--显示区域-->
 <div class="display_f">
 	<!--包的内容-->
 	<div class="display_f_in">
-    	<!--灵活收益-->
-    	<div class="fourcp_1">
+    	<!--土豪列表-->
+    	<div class="fourcp_1" id='lbox'>
         	<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:50%;">
-                            <p>50%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
-    		<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao3.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:50%;">
-                            <p>50%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
-    		<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao4.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:50%;">
-                            <p>50%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="#"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
+            
     	</div>
         <!--理财计划-->
         <div class="fourcp_1">
@@ -683,16 +567,59 @@ $(function () {
 </body>           
 </html> 
 <script type="text/javascript">
-$(document).ready(function(){
-    $.ajax
-    ({
-        url: "http://119.23.46.11/investment/lenders",
-        dataType: "jsonp",
-        jsonp: "jsoncallback",
-        success: function(data){
-         alert( "Data Saved: " + data );
-         // $.each(data,function(k,v){
 
+$(function(){
+    //前台首页统计数据展示
+    $.ajax({
+        url: "http://119.23.46.11/public/indexdata",
+        dataType: "json",
+        success: function(indexdata){
+            var data = '';
+            $.each(indexdata.data,function(k,v){
+                data +='<li><em>'+v+'</em><span>'+k+'</span></li>';
+            })
+            //alert(data)
+         $('#databox').html(data);
+        }
+    })
+
+
+    //前台首页放款列表展示
+    $.ajax({
+        url: "http://119.23.46.11/investment/loand",
+        dataType: "jsonp",
+        success: function(data){
+         //alert( "Data Saved: " + data );
+         var str='';
+         var str1='';
+            $.each(data,function(k,v){
+                if (k<3) {
+                    //alert(k)
+                    str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                    str +='<div class="novice_zs_f_in_l">';
+                    str +='<div class="novice_zs_f_in_l_top">';
+                    str +='<img src="image/biao.png"/>';
+                    str +='<span>这是土豪标</span></div>';
+                    str +='<div class="novice_zs_f_in_l_bottom"><ul>';
+                    str +='<li class="mark1_f">';
+                    str +='<em>'+v.lenging_interest+'</em>';
+                    str +='<p>年利率</p></li>';
+                    str +='<li class="mark2_f">';
+                    str +='<em>3<font>个月</font></em>';
+                    str +='<p>期限</p></li>';
+                    str +='<li class="mark3_f">';
+                    str +='<em><font>￥</font>'+v.lenging_money+'</em>';
+                    str +='<p>投资金额</p></li>';
+                    str +='<li class="mark4_f">';
+                    str +='<span><img src="image/redbl.png"/ style="height:50%;">';
+                    str +='<p>50%</p></span></li></ul></div></div><a href="html/Investment details.html">';
+                    str +=' <div class="novice_zs_f_in_r">';
+                    str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                    str +='</div></a></div>';
+                }
+            })
+            //alert(str);
+            $('#lbox').html(str);
         }
     })
 })
