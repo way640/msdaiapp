@@ -2,12 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>信富平台</title>
+<title>马上贷</title>
 <base href="../">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
-
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--基础样式-->
@@ -18,7 +17,6 @@
 <!--js-->
 <script src="js/jquery-1.8.3.min.js"></script> 
 <script src="js/app_mian.js"></script>
-
 
 
 <script>
@@ -35,7 +33,7 @@ $(function(){
 
                 $('#user_head').attr('src', msg.data.user_head);
                 $('#user_account').val(msg.data.user_account);
-                $('#user_tel').val(msg.data.user_tel);
+                $('#user_tel').html(msg.data.user_tel);
                 $('#user_email').val(msg.data.user_email);
                 $('#user_card').val(msg.data.user_card);
                 $('#user_paypwd').val(msg.data.user_paypwd);
@@ -61,44 +59,55 @@ $(function(){
 
 <div class="top">
 	<div class="box">
-        <a href="html/user.html" class="return"><img src="image/return.png"></a>
+        <a href="javascript:void(0);" id="back" class="return"><img src="image/return.png"></a>
         个人信息    
     </div>
 </div>
 
+<form id="demo" autocomplete="off">
 <div class="ten_money" style="margin-top:44px;">
 	<div class="box">
     <br>
     	<ul>
-            
             <center>
-                <img id="user_head" src="" style="height:100px">
+                <a href="html/cut_avatar.html"><img id="user_head" src="" style="height:100px"></a>
             </center>
             <br>
-        	<li>
-            	<span>用户名</span>
-                <i><input type="text" id="user_account" name="user_account" value="莉莉" placeholder="请输入用户名"></i>
+<!--     <li>
+        <span>User：</span>
+        <input type="text" name="" value="" placeholder="4-8位用户名" class="reg_user">
+        <span class="user_hint"></span>
+    </li> -->
+            <li>
+                <span>用户名</span>
+                <i><input type="text" id="user_account" name="user_account" vlaue="" placeholder="请输入4-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
             	<span>手机号</span>
-                <i><input type="text" id="user_tel" name="user_tel" value="15912341234" placeholder="请输入手机号"></i>
+                <!-- <i><input type="text" id="user_tel" name="user_tel" value="15912341234" placeholder="请输入手机号" disabled class="reg_tel" style="position:relative;right:22%;"></i><span class="tel_hint" style="position:absolute;right:8%"></span> -->
+              <i style="width:48%;"><font id="user_tel" style="position:relative;right:22%;display:inline-block;"></font></i>
             </li>
             <br>
             <li>
             	<span>邮箱</span>
-                <i><input type="text" id="user_email" name="user_email" value="12345678@qq.com" placeholder="请输入邮箱"></i>
+                <i><input type="text" id="user_email" name="user_email" value="12345678@qq.com" placeholder="请输入邮箱" class="reg_email" style="position:relative;right:22%;"></i><span class="email_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
                 <span>身份证号</span>
-                <i><input type="text" id="user_card" name="user_card" value="130604123412341234" placeholder="请输入身份证号"></i>
+                <i><input type="text" id="user_card" name="user_card" value="130604123412341234" placeholder="请输入身份证号" class="reg_card" style="position:relative;right:22%;"></i><span class="card_hint" style="position:absolute;right:8%"></span>
+            </li>
+            <br>
+            <li>
+                <span>居住地址</span>
+                <i><input type="text" name="user_addr" value="130604123412341234" placeholder="请输入身份证号" class="reg_addr" style="position:relative;right:22%;"></i><span class="addr_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
             <span>支付密码</span>
-            <i><input type="password" id="user_paypwd" name="user_paypwd" class="input_text_password mima_dd" style="margin-top:10px;" placeholder="请输入密码" >
-            <input name="" type="text" class="input_text_password mima_wz" style="display:none;margin-top:10px;" placeholder="请输入密码" ></i>
+            <i><input type="password" id="reg_paypwd" name="user_paypwd" class="input_text_password mima_dd" class="reg_paypwd" style="margin-top:10px;position:relative;right:22%;" placeholder="请输入6位数字" >
+            <input name="check_user_paypwd" type="text" class="input_text_password mima_wz" style="display:none;margin-top:10px;position:relative;right:22%;" placeholder="请输入6位数字" ></i>
            
             <!--<input name="" type="password" class="input_text_password mima_dd" style="margin-top:10px;" placeholder="请输入密码" >
             <input name="" type="text" class="input_text_password mima_wz" style="display:none;margin-top:10px;" placeholder="请输入密码" >-->
@@ -106,18 +115,137 @@ $(function(){
 
             </li>
             <br>
-            <li>
-                <span>居住地址</span>
-                <i><input type="text" name="user_addr" value="130604123412341234" placeholder="请输入身份证号"></i>
-            </li>
-            <br>
+<div class="us_rec">
+    <span><a href="javascript:void(0);" id="save">保存</a></span>
+    <span><a href="javascript:void(0);" id="reset" style="background:#fff; border:1px solid #29a7e2; color:#29a7e2;">清空</a></span>
+</div>
+
         </ul>
     </div>
 </div>
+</form>
 </body>
 
 <script>
-    $()
+
+var user_Boolean   = false;
+var tel_Boolean    = false;
+var email_Boolean  = false;
+var card_Boolean   = false;
+var addr_Boolean   = false; 
+
+var paypwd_Boolean = false;
+
+//正则判断用户名是否正确
+$('.reg_user').blur(function(){
+  
+    if ((/^[\u4e00-\u9fa5a-zA-Z\d]{4,8}$/).test($(".reg_user").val())){
+        $('.user_hint').html("✔").css("color","green");
+        user_Boolean = true;
+    }else {
+        $('.user_hint').html("×").css("color","red");
+        user_Boolean = false;
+    }
+});
+
+//正则判断电话号码是否正确
+$('.reg_tel').blur(function(){
+    if ((/^1[34578]\d{9}$/).test($(".reg_tel").val())){
+        $('.tel_hint').html("✔").css("color","green");
+        tel_Boolean = true;
+    }else {
+        $('.tel_hint').html("×").css("color","red");
+        tel_Boolean = false;
+    }
+});
+
+//正则判断邮箱是否正确
+$('.reg_email').blur(function(){
+    if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".reg_email").val())){
+        $('.email_hint').html("✔").css("color","green");
+        email_Boolean = true;
+    }else {
+        $('.email_hint').html("×").css("color","red");
+        email_Boolean = false;
+    }
+});
+
+
+//正则判断身份证号是否正确
+$('.reg_card').blur(function(){
+    if ((/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/).test($(".reg_card").val())){
+        $('.card_hint').html("✔").css("color","green");
+        card_Boolean = true;
+    }else {
+        $('.card_hint').html("×").css("color","red");
+        card_Boolean = false;
+    }
+});
+
+//正则判断居住地址是否正确
+$('.reg_addr').blur(function(){
+    if ((/^[\u4e00-\u9fa5\d]{6,30}$/).test($(".reg_addr").val())){
+        $('.addr_hint').html("✔").css("color","green");
+        addr_Boolean = true;
+    }else {
+        $('.addr_hint').html("×").css("color","red");
+        addr_Boolean = false;
+    }
+});
+
+//正则判断支付密码是否填写
+$('#reg_paypwd').blur(function(){
+    if ((/^\d{6}$/).test($("#reg_paypwd").val())){
+        paypwd_Boolean = true;
+    }else {
+        paypwd_Boolean = false;
+    }
+})
+
+$('#reset').click(function(){
+    var statu = confirm("你确定要清空数据吗?");
+    if(!statu){
+        return false;
+    }else{
+        $("input").attr("value","");
+    }
+});
+
+$('#back').click(function(){
+    var statu = confirm("退出之后数据无法保存，你确定要退出吗?");
+    if(!statu){
+        return false;
+    }else{
+        history.go(-1)
+    }
+})
+
+$('#save').click(function(){
+    
+    
+
+    if(user_Boolean && tel_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
+        
+        if(paypwd_Boolean == false){
+            $('#reg_paypwd').attr('value', "");
+            var statu = confirm("您的支付密码填写不正确，是否保存其他数据?");
+            if(!statu){
+                return false;
+            }else{
+                sendInfo()
+            }
+        }else{
+            sendInfo()
+        }
+    }else{
+        alert("请在您提交修改前确认您的信息是否填写正确");
+    }
+});
+
+function sendInfo(){
+
+
+}
 </script>
 
 </html>
