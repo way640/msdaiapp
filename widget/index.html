@@ -31,8 +31,8 @@
 <!--banner-->
 <div class="callbacks_container" id="slider">
 	<ul class="rslides" >
-		<li><img src="image/pic_home_slider_1.png" data-src="image/pic_home_slider_1.png"></li>
-		<li><img src="image/pic_home_slider_2.png" data-src="image/pic_home_slider_2.png"></li>
+		<li style="float: left;"><img src="image/pic_home_slider_1.png" data-src="image/pic_home_slider_1.png"></li>
+		<li style="float: left;"><img src="image/pic_home_slider_2.png" data-src="image/pic_home_slider_2.png"></li>
 		<li><img src="image/pic_home_slider_3.png" data-src="image/pic_home_slider_3.png"></li>
 		<li><img src="image/pic_home_slider_4.png" data-src="image/pic_home_slider_4.png"></li>
     </ul>
@@ -40,8 +40,9 @@
 </div>
 
 <script type="text/javascript">
-
 $(function(){
+    $('.callbacks_container').height($('.callbacks_container').width()/2);
+    $('.callbacks_container li').width($('.callbacks_container').width());
     $("#slider").touchSlide({lazyLoad:true});
 
 })
