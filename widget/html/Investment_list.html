@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 <!--2灵活收益&理财计划&散标专区&债权转让-->
 <div class="xfdsctz_f">
 	<ul>
@@ -69,7 +70,7 @@
             </div>
         </div>
     <!--right-->
-    	<a href="html/Investment details.html"><div class="novice_zs_f_in_r">
+    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
         	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
@@ -111,7 +112,7 @@
             </div>
         </div>
     <!--right-->
-    	<a href="html/Investment details.html"><div class="novice_zs_f_in_r">
+    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
         	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
@@ -155,7 +156,7 @@
             </div>
         </div>
     <!--right-->
-    	<a href="html/Investment details.html"><div class="novice_zs_f_in_r">
+    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
         	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
         </div></a>
     </div>
@@ -173,11 +174,12 @@ jQuery(document).ready(function(){
         url: url,
         dataType: "jsonp",
         jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-        jsonpCallback:"localHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+        jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
         success: function(data){
             var str='';
             $.each(data,function(k,v){
                 str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                str +=' <input type="hidden" value="'+v.lenging_id+'" id="hidd">';
                 str +='<div class="novice_zs_f_in_l">';
                 str +='<div class="novice_zs_f_in_l_top">';
                 str +='<img src="image/biao.png"/>';
@@ -206,7 +208,7 @@ jQuery(document).ready(function(){
                 str +=' </ul>';
                 str +='</div>';
                 str +='</div>';
-                str +=' <a href="html/Investment details.html">';
+                str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang">';
                 str +=' <div class="novice_zs_f_in_r">';
                 str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
                 str +='</div>';
@@ -227,15 +229,15 @@ jQuery(document).ready(function(){
     	<b><img src="image/zhuye.png"/></b>
         <p>首页</p>
     </a>
-    <a href="html/Investment list.html">
+    <a href="html/Investment_list.html">
     	<b class="movek_f"><img src="image/touzi.png"/></b>
         <p>投资</p>
     </a>
-    <a href="user.html">
+    <a href="html/user.html">
     	<b><img src="image/grzx.png"/></b>
         <p>账户</p>
     </a>
-    <a href="more.html">
+    <a href="html/more.html">
     	<b><img src="image/mores.png"/></b>
         <p>更多</p>
     </a>
