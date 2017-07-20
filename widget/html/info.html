@@ -26,7 +26,6 @@ $(function(){
         type:'GET',
         url:"http://119.23.46.11/user/backuserinfo",
         dataType:'json',
-       // jsonp:"jsoncallback",
         success:function(msg){
 
             if(msg.status == 1){
@@ -45,9 +44,6 @@ $(function(){
             }
         }
     })
-    
-
-    //$.get('http://119.23.46.11/user/backuserinfo', function (res) { console.log(res); }, 'json'); 
 })
 </script>
 
@@ -91,22 +87,22 @@ $(function(){
             <br>
             <li>
             	<span>邮箱</span>
-                <i><input type="text" id="user_email" name="user_email" value="12345678@qq.com" placeholder="请输入邮箱" class="reg_email" style="position:relative;right:22%;"></i><span class="email_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_email" name="user_email" value="" placeholder="请输入邮箱" class="reg_email" style="position:relative;right:22%;"></i><span class="email_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
                 <span>身份证号</span>
-                <i><input type="text" id="user_card" name="user_card" value="130604123412341234" placeholder="请输入身份证号" class="reg_card" style="position:relative;right:22%;"></i><span class="card_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_card" name="user_card" value="" placeholder="请输入身份证号" class="reg_card" style="position:relative;right:22%;"></i><span class="card_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
                 <span>居住地址</span>
-                <i><input type="text" name="user_addr" value="130604123412341234" placeholder="请输入身份证号" class="reg_addr" style="position:relative;right:22%;"></i><span class="addr_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" name="user_addr" value="" placeholder="请输入居住地址" class="reg_addr" style="position:relative;right:22%;"></i><span class="addr_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
             <span>支付密码</span>
-            <i><input type="password" id="reg_paypwd" name="user_paypwd" class="input_text_password mima_dd" class="reg_paypwd" style="margin-top:10px;position:relative;right:22%;" placeholder="请输入6位数字" >
+            <i><input type="password" id="user_paypwd" name="user_paypwd" class="input_text_password mima_dd" class="reg_paypwd" style="margin-top:10px;position:relative;right:22%;" placeholder="请输入6位数字" >
             <input name="check_user_paypwd" type="text" class="input_text_password mima_wz" style="display:none;margin-top:10px;position:relative;right:22%;" placeholder="请输入6位数字" ></i>
            
             <!--<input name="" type="password" class="input_text_password mima_dd" style="margin-top:10px;" placeholder="请输入密码" >
@@ -129,7 +125,7 @@ $(function(){
 <script>
 
 var user_Boolean   = false;
-var tel_Boolean    = false;
+
 var email_Boolean  = false;
 var card_Boolean   = false;
 var addr_Boolean   = false; 
@@ -145,17 +141,6 @@ $('.reg_user').blur(function(){
     }else {
         $('.user_hint').html("×").css("color","red");
         user_Boolean = false;
-    }
-});
-
-//正则判断电话号码是否正确
-$('.reg_tel').blur(function(){
-    if ((/^1[34578]\d{9}$/).test($(".reg_tel").val())){
-        $('.tel_hint').html("✔").css("color","green");
-        tel_Boolean = true;
-    }else {
-        $('.tel_hint').html("×").css("color","red");
-        tel_Boolean = false;
     }
 });
 
@@ -224,7 +209,7 @@ $('#save').click(function(){
     
     
 
-    if(user_Boolean && tel_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
+    if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
         
         if(paypwd_Boolean == false){
             $('#reg_paypwd').attr('value', "");
@@ -244,7 +229,27 @@ $('#save').click(function(){
 
 function sendInfo(){
 
+    var user_account = $('#user_account').val();
+    var user_email   = $('#user_email').val();
+    var user_card    = $('#user_card').val();
+    var user_addr    = $('#user_addr').val();
+    var user_paywpd  = $('#user_paypwd').val();
+ 
+    $.ajax({
+        type:'GET',
+        url:"http://119.23.46.11/user/updateuserinfo",
+        data:'user_account='+user_account+"&user_email="+user_email+"&user_card="+user_card+"&user_addr="+user_addr+"&user_paypwd="+paypwd,
+        dataType:'json',  
+        success:function(msg){
 
+            if(msg.status == 1){
+                alert('已成功保存修改');
+                history.go(-1);
+            }else{
+                alert('页面加载失败，请重试');
+            }
+        }
+    })
 }
 </script>
 
