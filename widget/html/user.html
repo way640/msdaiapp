@@ -1,16 +1,15 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>信富平台</title>
-<base href="../">
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" type="text/css" href="css/xinfugai.css">
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/jquery.js"></script>
-
+    <meta charset="utf-8">
+    <title>马上贷</title>
+    <base href="../">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/xinfugai.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
 <script>
 $(function(){
     
@@ -39,8 +38,6 @@ $(function(){
 })
 </script>
 
-
-
 </head>
 
 
@@ -49,9 +46,9 @@ $(function(){
 <body>
 <!--top-->
 <div class="top">
-	<div class="box">
+    <div class="box">
         <a href="html/index.html" class="return"><img src="image/return.png"></a>
-        我的账户    
+        我的账户
     </div>
 </div>
 <div class="user">
@@ -67,23 +64,33 @@ $(function(){
     <div class="vipczjdu">
     	<!--top-->
         <div class="vipdu_t">
+
         	<span>
             	<p></p>
             </span>￥
-            <em>50000</em>
-            
+                <em>50000</em>
+
+            </div>
+            <!--bottom-->
+            <div class="vipdu_b">
+                <span>代收金额：</span>
+                <i>￥</i>
+                <i class="nans">2000</i>
+                <span>距离成为vip还差：</span>
+                <i>￥</i>
+                <b></b>
+            </div>
+            <script>
+                var n=$(".nans").html()
+                var l=50000
+                var pp=l-n
+                $(".vipdu_b b").text(pp)
+                var p=n/l*100+'%';
+                $(".vipdu_t span p").css({width:p})
+            </script>
         </div>
 
-        <script>
- 		var n=$(".nans").html()
- 		var l=50000
- 		var pp=l-n
- 		$(".vipdu_b b").text(pp)
- 		var p=n/l*100+'%';
- 		$(".vipdu_t span p").css({width:p})
-		</script>
-    </div>
-    <div class="us_ke">
+        <div class="us_ke">
         	<span style="border-right:1px solid #dcdcdc;">
             	<i>可用余额（元）</i>
                 <em>134543</em>
@@ -101,18 +108,17 @@ $(function(){
 </div>
 <!--微信部分-->
 <div class="xinfuer_t">
-
 </div>
 <script>
-var this_w=$(".xinfuer_t").width()/3+'px';
-$(".xinfuer_t a").css({height:this_w,width:this_w});
+    var this_w=$(".xinfuer_t").width()/3+'px';
+    $(".xinfuer_t a").css({height:this_w,width:this_w});
 </script>
 <!--占空部分-->
 <div class="zkdbfyi_f" style="width:100%; height:52px;"></div>
 <!--底部导航栏-->
 <div class="footerdhl_f">
-	<a href="index.html">
-    	<b><img src="image/zhuye.png"/></b>
+    <a href="index.html">
+        <b><img src="image/zhuye.png"/></b>
         <p>首页</p>
     </a>
     <a href="html/Investment_list.html">
@@ -132,26 +138,4 @@ $(".xinfuer_t a").css({height:this_w,width:this_w});
 <!--空格-->
 
 </body>
-</html>	
-    
-    
-
-
-
-
-
-    
-        
-
-
-
-
-
-
-
-
-
-    
-
-        
-
+</html>
