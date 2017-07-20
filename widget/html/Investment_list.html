@@ -12,8 +12,14 @@
 </head>
 
 <body>
+<div class="projectd_f">
+    <div class="projectd_f_in">
+        <a href="index.html"><img src="image/jian.png"/></a>
+        投资列表
+    </div>
+</div>
 <!--2灵活收益&理财计划&散标专区&债权转让-->
-<div class="xfdsctz_f">
+<div class="xfdsctz_f" style="margin-top: 42px;">
 	<ul>
     	<li class="addys_f2">灵活收益</li>
         <li>理财计划</li>
@@ -22,9 +28,9 @@
     </ul>
 </div>
 <!--占固定定位的块-->
-<div class="occupy_f"></div>
+<div class="occupy_f" style="margin-top: 44px;"></div>
 <!--显示区域-->
-<div class="display_f">
+<div class="display_f" >
 	<!--包的内容-->
 	<div class="display_f_in">
     	<!--灵活收益-->
@@ -176,45 +182,28 @@ jQuery(document).ready(function(){
         jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
         success: function(data){
             var str='';
-            $.each(data,function(k,v){
-                str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
-                str +=' <input type="hidden" value="'+v.lenging_id+'" id="hidd">';
-                str +='<div class="novice_zs_f_in_l">';
-                str +='<div class="novice_zs_f_in_l_top">';
-                str +='<img src="image/biao.png"/>';
-                str +='<span>测试标不要投</span>';
-                str +='</div>';
-                str +='<div class="novice_zs_f_in_l_bottom">';
-                str +='<ul>';
-                str +='<li class="mark1_f">';
-                str +='<em>'+v.lenging_interest+'</em>';
-                str +=' <p>年利率</p>';
-                str +='</li>';
-                str +='<li class="mark2_f">';
-                str +='<em>3<font>个月</font></em>';
-                str +='<p>期限</p>';
-                str +='</li>';
-                str +='<li class="mark3_f">';
-                str +='<em><font>￥</font>'+v.lenging_money+'</em>';
-                str +=' <p>投资金额</p>';
-                str +='</li>';
-                str +='<li class="mark4_f">';
-                str +=' <span>';
-                str +=' <img src="image/redbl.png"/ style="height:50%;">';
-                str +='<p>50%</p>';
-                str +='</span>';
-                str +='</li>';
-                str +=' </ul>';
-                str +='</div>';
-                str +='</div>';
-                str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang">';
-                str +=' <div class="novice_zs_f_in_r">';
-                str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
-                str +='</div>';
-                str +='</a>';
-                str +='</div>';
-            });
-            $('#tbody').html(str);
+            if(data.code==1){
+                $.each(data.data,function(k,v){
+                    var ke=v.lenging_money-v.lenging_borrow;
+                    var bai=Math.round((ke/v.lenging_money)*100);
+                    str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                    str +='<input type="hidden" value="'+v.lenging_id+'" id="hidd">';
+                    str +='<div class="novice_zs_f_in_l"><div class="novice_zs_f_in_l_top">';
+                    str +='<img src="image/biao.png"/><span>测试标不要投</span></div>';
+                    str +='<div class="novice_zs_f_in_l_bottom"><ul><li class="mark1_f"><em>'+v.lenging_interest+'</em>';
+                    str +=' <p>年利率</p></li><li class="mark2_f"><em>'+v.time+'<font>个月</font></em><p>期限</p>';
+                    str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
+                    str +='</li><li class="mark4_f"><span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
+                    str +='<p>'+bai+'%</p></span></li></ul></div></div>';
+                    str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                    str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span></div></a></div>';
+                });
+                $('#tbody').html(str);
+            }
+            else if(data.code==0)
+            {
+                alert('请求失败');
+            }
         },
         error: function(){
             alert('fail');
