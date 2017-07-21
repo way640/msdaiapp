@@ -76,7 +76,7 @@ $(function(){
     </li> -->
             <li>
                 <span>用户名</span>
-                <i><input type="text" id="user_account" name="user_account" vlaue="" placeholder="请输入4-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_name" name="user_name" vlaue="" placeholder="请输入4-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
@@ -97,7 +97,7 @@ $(function(){
             <br>
             <li>
                 <span>居住地址</span>
-                <i><input type="text" name="user_addr" value="" placeholder="请输入居住地址" class="reg_addr" style="position:relative;right:22%;"></i><span class="addr_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_addr" name="user_addr" value="" placeholder="请输入居住地址" class="reg_addr" style="position:relative;right:22%;"></i><span class="addr_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
@@ -179,8 +179,8 @@ $('.reg_addr').blur(function(){
 });
 
 //正则判断支付密码是否填写
-$('#reg_paypwd').blur(function(){
-    if ((/^\d{6}$/).test($("#reg_paypwd").val())){
+$('#user_paypwd').blur(function(){
+    if ((/^\d{6}$/).test($("#user_paypwd").val())){
         paypwd_Boolean = true;
     }else {
         paypwd_Boolean = false;
@@ -201,7 +201,7 @@ $('#back').click(function(){
     if(!statu){
         return false;
     }else{
-        history.go(-1)
+        history.go(-1);
     }
 })
 
@@ -229,16 +229,16 @@ $('#save').click(function(){
 
 function sendInfo(){
 
-    var user_account = $('#user_account').val();
+    var user_name    = $('#user_name').val();
     var user_email   = $('#user_email').val();
     var user_card    = $('#user_card').val();
     var user_addr    = $('#user_addr').val();
     var user_paywpd  = $('#user_paypwd').val();
  
     $.ajax({
-        type:'GET',
+        type:'POST',
         url:"http://119.23.46.11/user/updateuserinfo",
-        data:'user_account='+user_account+"&user_email="+user_email+"&user_card="+user_card+"&user_addr="+user_addr+"&user_paypwd="+paypwd,
+        data:'user_name='+user_name+"&user_email="+user_email+"&user_card="+user_card+"&user_addr="+user_addr+"&user_paypwd="+user_paywpd,
         dataType:'json',  
         success:function(msg){
 
