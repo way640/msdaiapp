@@ -229,6 +229,8 @@ $(function(){
          //alert( data );
          var str='';
             $.each(data,function(k,v){
+                    var ke=v.lenging_money-v.lenging_borrow;
+                    var bai=Math.round((ke/v.lenging_money)*100);
                     str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
                     str +='<div class="novice_zs_f_in_l">';
                     str +='<div class="novice_zs_f_in_l_top">';
@@ -239,14 +241,14 @@ $(function(){
                     str +='<em>'+v.lenging_interest+'</em>';
                     str +='<p>年利率</p></li>';
                     str +='<li class="mark2_f">';
-                    str +='<em>3<font>个月</font></em>';
+                    str +='<em>'+v.time+'<font>个月</font></em>';
                     str +='<p>期限</p></li>';
                     str +='<li class="mark3_f">';
                     str +='<em><font>￥</font>'+v.lenging_money+'</em>';
                     str +='<p>投资金额</p></li>';
                     str +='<li class="mark4_f">';
-                    str +='<span><img src="image/redbl.png"/ style="height:50%;">';
-                    str +='<p>50%</p></span></li></ul></div></div><a href="html/Investment_details.html?lenging_id='+v.lenging_id+'">';
+                    str +='<span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
+                    str +='<p>'+bai+'%</p></span></li></ul></div></div><a href="html/Investment_details.html?lenging_id='+v.lenging_id+'">';
                     str +=' <div class="novice_zs_f_in_r">';
                     str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
                     str +='</div></a></div>';
