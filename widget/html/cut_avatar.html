@@ -74,28 +74,30 @@ $("#clipArea").photoClip({
 	},
 	clipFinish: function(dataURL) {
 		//图片路径
-		imgUrl = dataURL
+		imgUrl = encodeURIComponent(dataURL);
 	}
 });
+</script>
+<script>
+	$('#submitimg').on('click', function(){
 
-$('#submitimg').on('click', function(){
-    $.ajax({
-        type:'POST',
-        url:"http://119.23.46.11/user/userimg",
-        data:'img='+imgUrl,
-        dataType:'json',
-        success:function(msg){
+		$.ajax({
+            type:'POST',
+            url:"http://119.23.46.11/user/userimg",
+            data:'img='+imgUrl,
+            dataType:'json',
+            success:function(msg){
 
-            if(msg.status == 1){
+                if(msg.status == 1){
 
-                console.log(msg)
-            }else{
+                    console.log(msg)
+                }else{
 
-                alert('图片加载失败，请重试！');
+                    alert('页面加载失败，请重试！')
+                }
             }
-        }
-    })
-})
+        })	
+	})
 </script>
 <script>
 $(function(){

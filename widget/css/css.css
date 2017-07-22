@@ -44,7 +44,7 @@ a{
 	}
 
 /*外框*/
-.callbacks_container{position:relative;overflow:hidden;font-size:0;width:100%;}
+.callbacks_container{position:relative;overflow:hidden;font-size:0;width:100%;margin-top: 3px}
 .callbacks_container ul{ position:absolute}
 .callbacks_container li{position:relative;float:left;display:inline;}
 /*小按钮样式*/
