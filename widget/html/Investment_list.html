@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>投资列表</title>
+<title>借款列表</title>
     <base href="../">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" type="text/css" href="css/common.css">
@@ -14,17 +14,18 @@
 <body>
 <div class="projectd_f">
     <div class="projectd_f_in">
-        <a href="index.html"><img src="image/jian.png"/></a>
-        投资列表
+        <a href="javascript:history.go(-1)"><img src="image/jian.png"/></a>
+        借款列表
     </div>
 </div>
+
 <!--2灵活收益&理财计划&散标专区&债权转让-->
 <div class="xfdsctz_f" style="margin-top: 42px;">
 	<ul>
-    	<li class="addys_f2">灵活收益</li>
-        <li>理财计划</li>
-        <li>散标专区</li>
-        <li>债券转让</li>
+    	<li class="addys_f2" value="0" id="ling">灵活收益</li>
+        <li value="1" id="xin">最新放款</li>
+        <li value="2" id="di">利率最低</li>
+        <li value="3" id="duo">资金最多</li>
     </ul>
 </div>
 <!--占固定定位的块-->
@@ -33,143 +34,9 @@
 <div class="display_f" >
 	<!--包的内容-->
 	<div class="display_f_in">
-    	<!--灵活收益-->
     	<div class="fourcp_1" id="tbody">
-        	<!--一条开始-->
-
 
         </div>
-        <!--理财计划-->
-        <div class="fourcp_1">
-        	<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao5.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:60%;">
-                            <p>60%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
-    		<a href="#" style="display:block;width:94%;height:30px;background:#F00;margin:0 auto;border-radius:6px;background:#3DB1FA;font-size:16px;color:#fff; text-align:center;line-height:30px; margin-bottom:12px;">查看更多</a>
-        </div>
-        <!--散标专区-->
-        <div class="fourcp_1">
-        	<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao5.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:70%;">
-                            <p>80%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
-
-
-    		<a href="#" style="display:block;width:94%;height:30px;background:#F00;margin:0 auto;border-radius:6px;background:#3DB1FA;font-size:16px;color:#fff; text-align:center;line-height:30px; margin-bottom:12px;">查看更多</a>
-        </div>
-        <!--债券转让-->
-        <div class="fourcp_1">
-        	<!--一条开始-->
-            <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l">
-        	<!--top-->
-            <div class="novice_zs_f_in_l_top">
-            	<img src="image/biao5.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-            	<ul>
-                	<li class="mark1_f">
-                    	<em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                    	<em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                    	<em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                    	<span>
-                        	<img src="image/redbl.png"/ style="height:80%;">
-                            <p>90%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-    	<a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
-        	<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
-
-    		<a href="#" style="display:block;width:94%;height:30px;background:#F00;margin:0 auto;border-radius:6px;background:#3DB1FA;font-size:16px;color:#fff; text-align:center;line-height:30px; margin-bottom:12px;">查看更多</a>
-        </div>
-    </div>
-</div>
 <script>
 jQuery(document).ready(function(){
     var url = "http://119.23.46.11/investment/loand";
@@ -189,7 +56,7 @@ jQuery(document).ready(function(){
                     str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
                     str +='<input type="hidden" value="'+v.lenging_id+'" id="hidd">';
                     str +='<div class="novice_zs_f_in_l"><div class="novice_zs_f_in_l_top">';
-                    str +='<img src="image/biao.png"/><span>测试标不要投</span></div>';
+                    str +='<img src="image/biao.png"/><span>壕气冲天</span></div>';
                     str +='<div class="novice_zs_f_in_l_bottom"><ul><li class="mark1_f"><em>'+v.lenging_interest+'</em>';
                     str +=' <p>年利率</p></li><li class="mark2_f"><em>'+v.time+'<font>个月</font></em><p>期限</p>';
                     str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
@@ -210,6 +77,51 @@ jQuery(document).ready(function(){
         }
     });
 });
+
+
+   $('#xin,#di,#duo,#ling').click(function () {
+       var val=$(this).val();
+       var url = "http://119.23.46.11/investment/loand";
+       $.ajax({
+           type: "get",
+           async: false,
+           url: url,
+           dataType: "jsonp",
+           jsonp: "callback",
+           jsonpCallback:"data",
+           data:{
+               "val":val
+           },
+           success: function(data){
+               var str='';
+               if(data.code==1){
+                   $.each(data.data,function(k,v){
+                       var ke=v.lenging_money-v.lenging_borrow;
+                       var bai=Math.round((ke/v.lenging_money)*100);
+                       str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                       str +='<input type="hidden" value="'+v.lenging_id+'" id="hidd">';
+                       str +='<div class="novice_zs_f_in_l"><div class="novice_zs_f_in_l_top">';
+                       str +='<img src="image/biao.png"/><span>壕气冲天</span></div>';
+                       str +='<div class="novice_zs_f_in_l_bottom"><ul><li class="mark1_f"><em>'+v.lenging_interest+'</em>';
+                       str +=' <p>年利率</p></li><li class="mark2_f"><em>'+v.time+'<font>个月</font></em><p>期限</p>';
+                       str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
+                       str +='</li><li class="mark4_f"><span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
+                       str +='<p>'+bai+'%</p></span></li></ul></div></div>';
+                       str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                       str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span></div></a></div>';
+                   });
+                   $('#tbody').html(str);
+               }
+               else if(data.code==0)
+               {
+                   alert('请求失败');
+               }
+           },
+           error: function(){
+               alert('fail');
+           }
+       });
+   })
 </script>
 <!--底部导航栏-->
 <div class="footerdhl_f">

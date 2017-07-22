@@ -10,6 +10,13 @@
     <link rel="stylesheet" type="text/css" href="css/xinfugai.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script type="text/javascript" src="js/jquery.js"></script>
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jsapi.js"></script>
+<script type="text/javascript" src="js/corechart.js"></script>      
+<script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+
 <script>
 $(function(){
     
@@ -38,6 +45,22 @@ $(function(){
 })
 </script>
 
+<script type="text/javascript">
+gvChartInit();
+$(document).ready(function(){
+    $('#myTable5').gvChart({
+        chartType: 'PieChart',
+        gvSettings: {
+            vAxis: {title: 'No of players'},
+            hAxis: {title: 'Month'},
+            width: 400,
+            height: 200
+        }
+    });
+});
+</script>
+
+
 </head>
 
 
@@ -64,22 +87,6 @@ $(function(){
     <div class="vipczjdu">
     	<!--top-->
         <div class="vipdu_t">
-
-        	<span>
-            	<p></p>
-            </span>￥
-                <em>50000</em>
-
-            </div>
-            <!--bottom-->
-            <div class="vipdu_b">
-                <span>代收金额：</span>
-                <i>￥</i>
-                <i class="nans">2000</i>
-                <span>距离成为vip还差：</span>
-                <i>￥</i>
-                <b></b>
-            </div>
             <script>
                 var n=$(".nans").html()
                 var l=50000
@@ -100,7 +107,40 @@ $(function(){
                 <em>134543</em>
             </span>
         </div>
+    </div> 
+    <div class="us_ke">
+        <table id='myTable5' style="display:none;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>河北</th>
+                    <th>河南</th>
+                    <th>湖北</th>
+                    <th>湖南</th>
+                    <th>山东</th>
+                    <th>山西</th>
+                    <th>北京</th>
+                    <th>上海</th>
+                    <th>sddf</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <td>500</td>
+                    <td>300</td>
+                    <td>150</td>
+                    <td>180</td>
+                    <td>120</td>
+                    <td>180</td>
+                    <td>120</td>
+                    <td>500</td>
+                </tr>
+            </tbody>
+        </table>  
     </div>
+
 </div>
 <div class="us_rec">
     <span><a href="recharge.html">充值</a></span>

@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>投资过程</title>
+<title>立即借款</title>
+    <base href="../">
     <base href="../">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" type="text/css" href="css/common.css">
@@ -15,42 +16,38 @@
 <!--项目详情-->
 <div class="projectd_f">
 	<div class="projectd_f_in">
-    	<a href="WWW/msdaiapp/widget/html/Investment_details.html"><img src="images/jian.png"/></a>
-        立即投标
+    	<a href="javascript:history.go(-1)" id="fan"><img src="image/jian.png"/></a>
+        立即借款
     </div>
 </div>
 <!--2占固定定位的块-->
-<div class="occupy_f2"></div>
+<div class="occupy_f2" id="gu"></div>
 <!--项目名字-->
-<div class="project_name_f">
-	<div class="project_name_f_in">
-    	韩女士借款18.7万元 合同20161122-A
-    </div>
-</div>
+
 <!--简单描述-->
 <div class="sxdymy_f">
 	<div class="sxdymy_f_in">
     	<ul>
         	<li>
             	<span>标的类型</span>
-                <img src="images/biao.png"/>
-                <img src="images/biao2.png"/>
+                <img src="image/biao.png"/>
+                <img src="image/biao2.png"/>
             </li>
-        	<li>
-            	<span>起投金额</span>
-                <i>￥100</i>
-            </li>
-            <li>
-            	<span>可投金额</span>
-                <i>￥1005544</i>
-            </li>
+        	<!--<li>-->
+            	<!--<span>最低借款</span>-->
+                <!--<i>￥1000</i>-->
+            <!--</li>-->
+            <!--<li>-->
+            	<!--<span>可借金额</span>-->
+                <!--<i>￥1005544</i>-->
+            <!--</li>-->
         </ul>
     </div>
 </div>
 <!--投注金额-->
 <div class="amount_f">
 	<div class="amount_f_in">
-		<input type="text" value="" placeholder="投资金额/元" required>
+		<input type="text" value="" placeholder="可借金额/元" required>
     </div>
     <!--预期收益-->
     <div class="wcydl_f" style="width:94%;height:30px;margin:0 auto;line-height:30px;font-size:14px;">
@@ -63,9 +60,46 @@
     </div>    
 </div>
 <!--立即投标-->
-<a href="#" class="woxzjtl_f">立即投标</a>
+<a href="#" class="woxzjtl_f">立即借款</a>
 </body>
-</html>    	
+</html>
+
+<script>
+    jQuery(document).ready(function(){
+        var src = window.location.href;
+        var I = src.substr(src.indexOf("?id=") + 4).length;
+        var T = src.indexOf("?id=");
+        if (0 >= T) return "";
+        if (I == src.length) return -1;
+        var ur = src.substr(src.indexOf("?id=") + 4);
+
+        var url = "http://119.23.46.11/investment/lenders";
+        $.ajax({
+            type: "get",
+            async: false,
+            url: url,
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback:"data",
+            data:{
+                "id":ur
+            },
+            success: function(data){
+                var str='';
+                $.each(data.data,function(k,v){
+                    str +='<div class="project_name_f"><div class="project_name_f_in">';
+                    str +='合同&nbsp;&nbsp;'+v.lenging_no+'</div></div>';
+//                    str +='</li><li><span>还款方式</span><i>一次性还款</i></li><li>';
+//                    str +='<span>借款用途</span><i>生意周转</i></li><li><span>剩余时间</span>';                           str +='<i style="color:#3DB1FA">'+v.day+'天</i></li></ul></div></div>';
+                });
+                $('#gu').after(str);
+            },
+            error: function(){
+                alert('fail');
+            }
+        });
+    });
+</script>
     
 
             

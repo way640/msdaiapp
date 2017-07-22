@@ -15,6 +15,7 @@
 
 <script type="text/javascript" src="js/jquery.touchSlide.js" ></script>
 <link rel="stylesheet" type="text/css" href="css/css.css">
+<link rel="stylesheet" type="text/css" href="css/xinfugai.css">
 
 </head>
 
@@ -31,8 +32,8 @@
 <!--banner-->
 <div class="callbacks_container" id="slider">
 	<ul class="rslides" >
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_1.png" data-src="image/pic_home_slider_1.png" ></a></li>
-		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_2.png" data-src="image/pic_home_slider_2.png"></a></li>
+		<li style="float: left;"><a href="banner_xqy.html"><img src="image/pic_home_slider_1.png" data-src="image/pic_home_slider_1.png"></a></li>
+		<li style="float: left;"><a href="banner_xqy.html"><img src="image/pic_home_slider_2.png" data-src="image/pic_home_slider_2.png"></a></li>
 		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_3.png" data-src="image/pic_home_slider_3.png"></a></li>
 		<li><a href="banner_xqy.html"><img src="image/pic_home_slider_4.png" data-src="image/pic_home_slider_4.png"></a></li>
     </ul>
@@ -84,42 +85,26 @@ $(function(){
 <div class="novice_f">
     <div class="novice_f_in">
         <img src="image/tuigpng.png"/>
-        <h2>快乐推广标</h2>
+        <h2>便捷栏</h2>
     </div>
 </div>
 <!--推广标-->
-<div class="novice_zs_f">
-    <div class="novice_zs_f_in">
-    <!--left-->
-        <div class="novice_zs_f_in_l" style="background:url(image/013b1ec6df24.png) no-repeat center; background-size:cover;">
-            <!--top-->
-            <div class="novice_zs_f_in_l_top">
-                <span>敬请期待</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-                <ul>
-                    <li class="mark1_f" style="width:33%">
-                        <em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f" style="width:33%">
-                        <em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f" style="width:33%">
-                        <em><font>￥</font>20.10<font>万</font></em>
-                        <p>起投金额</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    <!--right-->
-        <a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
-            <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
-    </div>
+<div class="xinfuer_t" style='margin-top:10px'>
+    <a href="html/liyijisuanqi.html">
+        <b><img src="image/syjsq_t.png"/></b>
+    </a>
+    <a href="html/draw.html">
+        <b><img src="image/xycj_t.png"/></b>
+    </a>
+    <a href="#">
+        <b><img src="image/ewm_t.png"/></b>
+    </a>
+    
 </div>
+<script>
+    var this_w=$(".xinfuer_t").width()/3+'px';
+    $(".xinfuer_t a").css({height:this_w,width:this_w});
+</script>
 <!--新手专区标题-->
 <div class="novice_f">
     <div class="novice_f_in">
@@ -248,7 +233,7 @@ $(function(){
                     str +='<p>投资金额</p></li>';
                     str +='<li class="mark4_f">';
                     str +='<span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
-                    str +='<p>'+bai+'%</p></span></li></ul></div></div><a href="html/Investment_details.html?lenging_id='+v.lenging_id+'">';
+                    str +='<p>'+bai+'%</p></span></li></ul></div></div><a href="html/Investment_details.html?id='+v.lenging_id+'">';
                     str +=' <div class="novice_zs_f_in_r">';
                     str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
                     str +='</div></a></div>';
