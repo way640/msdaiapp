@@ -81,16 +81,19 @@ $("#clipArea").photoClip({
 <script>
 	$('#submitimg').on('click', function(){
 
+        var userID = window.parent.token.value;
+
 		$.ajax({
             type:'POST',
             url:"http://119.23.46.11/user/userimg",
-            data:'img='+imgUrl,
+            data:'img='+imgUrl+'&user_token='+userID,
             dataType:'json',
             success:function(msg){
 
                 if(msg.status == 1){
 
-                    console.log(msg)
+                    alert('头像已成功上传！');
+                    history.go(-1)
                 }else{
 
                     alert('页面加载失败，请重试！')

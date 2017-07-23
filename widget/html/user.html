@@ -20,11 +20,13 @@
 <script>
 $(function(){
     
+    var userID = window.parent.token.value
     var str = ''
 
     $.ajax({
         type:'GET',
         url:"http://119.23.46.11/user/backuserinfo",
+        data:'user_token='+userID,
         dataType:'json',
         success:function(msg){
 
