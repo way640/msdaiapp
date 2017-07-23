@@ -194,7 +194,7 @@ $(function(){
         success: function(data){
          //alert( data );
          var str='';
-            $.each(data,function(k,v){
+            $.each(data.data,function(k,v){
                     var ke=v.lenging_money-v.lenging_borrow;
                     var bai=Math.round((ke/v.lenging_money)*100);
                     str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';

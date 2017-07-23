@@ -22,9 +22,12 @@
 <script>
 $(function(){
     
+    var userID = window.parent.token.value;
+
     $.ajax({
         type:'GET',
         url:"http://119.23.46.11/user/backuserinfo",
+        data:'user_token='+userID,
         dataType:'json',
         success:function(msg){
 
@@ -81,8 +84,8 @@ $(function(){
             <br>
             <li>
             	<span>手机号</span>
-                <!-- <i><input type="text" id="user_tel" name="user_tel" value="15912341234" placeholder="请输入手机号" disabled class="reg_tel" style="position:relative;right:22%;"></i><span class="tel_hint" style="position:absolute;right:8%"></span> -->
-              <i style="width:48%;"><font id="user_tel" style="position:relative;right:22%;display:inline-block;"></font></i>
+                <i><input type="text" id="user_tel" name="user_tel" placeholder="15912341234" placeholder="请输入手机号" disabled class="reg_tel" style="position:relative;right:22%;"></i><span class="tel_hint" style="position:absolute;right:8%"></span>
+              <!-- <i><input type="text" value="17601112526"><font id="user_tel" style="position:relative;right:22%;display:inline-block;"></font></i> -->
             </li>
             <br>
             <li>
@@ -207,14 +210,13 @@ $('#back').click(function(){
 
 $('#save').click(function(){
     
-    
-
     if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
         
         if(paypwd_Boolean == false){
-            $('#reg_paypwd').attr('value', "");
+            
             var statu = confirm("您的支付密码填写不正确，是否保存其他数据?");
             if(!statu){
+                $('#reg_paypwd').attr('value', "");
                 return false;
             }else{
                 sendInfo()
