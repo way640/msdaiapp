@@ -15,7 +15,7 @@
 
 <div class="top">
 	<div class="box">
-        <a href="index.html" class="return"><img src="image/return.png"></a>
+        <a href="javascript:history.go(-1)" class="return"><img src="image/return.png"></a>
         登  录    
     </div>
 </div>s
@@ -50,7 +50,9 @@
                 dataType:'json',
                 success:function(data){
                     if(data.status == 1){
-                         location.href='index.html';
+                        var userID = window.parent.token.value;
+                        window.parent.token.value = data.data.token;
+                        window.parent.J_iframe.src = 'index_index.html';
                     }else {
                         alert(data.msg)
                     }
