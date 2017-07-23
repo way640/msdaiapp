@@ -20,6 +20,8 @@
 <script>
 $(function(){
     
+    var str = ''
+
     $.ajax({
         type:'GET',
         url:"http://119.23.46.11/user/backuserinfo",
@@ -35,6 +37,12 @@ $(function(){
                     $('#user_name').val(msg.data.user_account)
                 }
                 
+                str = "<table id='myTable5' style='display:none;'><thead><tr><th>进账资金</th><th>出账资金</th></tr></thead>";
+                str += "<tbody><tr><td>"+msg.data.roll_in+"</td>"
+                str += "<td>"+msg.data.roll_out+"</td></tr></tbody></table>"
+
+                $('#chartShow').html(str);
+
             }else{
 
                 alert('页面加载失败，请重试！')
@@ -108,8 +116,8 @@ $(document).ready(function(){
             </span>
         </div>
     </div> 
-    <div class="us_ke">
-        <table id='myTable5' style="display:none;">
+    <div class="us_ke" id="chartShow">
+        <table id='myTable5' style='display:none;'>
             <thead>
                 <tr>
                     <th></th>
