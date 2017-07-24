@@ -20,6 +20,15 @@
 
 
 <script>
+
+var user_Boolean   = false;
+
+var email_Boolean  = false;
+var card_Boolean   = false;
+var addr_Boolean   = false; 
+
+var paypwd_Boolean = false;
+
 $(function(){
     
     var userID = window.parent.token.value;
@@ -44,6 +53,24 @@ $(function(){
                 $('#user_card').val(msg.data.user_card);
                 $('#user_paypwd').val(msg.data.user_paypwd);
                 $('#user_addr').val(msg.data.user_addr);
+
+
+                if(msg.data.user_name != ''){
+                    user_Boolean   = true;
+                }
+                if(msg.data.user_email != ''){
+                    email_Boolean   = true;
+                }
+                if(msg.data.user_card != ''){
+                    card_Boolean   = true;
+                }
+                if(msg.data.user_paypwd != ''){
+                    paypwd_Boolean   = true;
+                }
+                if(msg.data.user_addr != ''){
+                    addr_Boolean   = true;
+                }
+
 
             }else{
 
@@ -83,7 +110,7 @@ $(function(){
     </li> -->
             <li>
                 <span>用户名</span>
-                <i><input type="text" id="user_name" name="user_name" vlaue="" placeholder="请输入4-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_name" name="user_name" vlaue="" placeholder="请输入2-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
@@ -131,13 +158,6 @@ $(function(){
 
 <script>
 
-var user_Boolean   = false;
-
-var email_Boolean  = false;
-var card_Boolean   = false;
-var addr_Boolean   = false; 
-
-var paypwd_Boolean = false;
 
 //正则判断用户名是否正确
 $('.reg_user').blur(function(){
@@ -200,6 +220,14 @@ $('#reset').click(function(){
         return false;
     }else{
         $("input").attr("value","");
+
+        user_Boolean   = false;
+
+        email_Boolean  = false;
+        card_Boolean   = false;
+        addr_Boolean   = false; 
+
+        paypwd_Boolean = false;
     }
 });
 
@@ -214,20 +242,10 @@ $('#back').click(function(){
 
 $('#save').click(function(){
     
-    if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
-        
-        if(paypwd_Boolean == false){
-            
-            var statu = confirm("您的支付密码填写不正确，是否保存其他数据?");
-            if(!statu){
-                $('#reg_paypwd').attr('value', "");
-                return false;
-            }else{
-                sendInfo()
-            }
-        }else{
-            sendInfo()
-        }
+    if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean && paypwd_Boolean == true){
+
+        sendInfo()
+
     }else{
         alert("请在您提交修改前确认您的信息是否填写正确");
     }
