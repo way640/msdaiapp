@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
-
+<script src="js/jquery-2.1.1.min.js"></script>
 </head>
 
 <body style="background:#fff;">
@@ -18,27 +18,40 @@
 	<div class="box">
         <a href="javascript:history.go(-1)" class="return"><img src="image/return.png"></a>
         充值
-        <a href="html/recharge1.html" class="po_rec">充值记录</a>    
     </div>
 </div>
 
-
-
 <div class="login_lo" style="margin-top:66px;">
 	<div class="box">
-    	<div class="balance">
-            <span>账户当期余额：<i>0.00</i>元</span>
-        </div>
         <div class="lo_1 lo_2">
         	<span>充值金额</span>
-            <input type="text" name="address" size="60" maxlength="60" style="color:#ccc" value="请输入充值金额" onfocus="if(this.value=='请输入充值金额'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入充值金额'){this.value='请输入充值金额';this.style.color='#ccc';}">
+            <input type="text" id="address" name="address" size="60" maxlength="60" style="color:#ccc" value="请输入充值金额" onfocus="if(this.value=='请输入充值金额'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入充值金额'){this.value='请输入充值金额';this.style.color='#ccc';}">
         </div>
         <span class="zui"><i>*</i> 最低充值金额为 100 元</span>
                     
-        <a href="html/user.html" class="lo_login">充值</a>
+        <a class="lo_login" id='btn'>充值</a>
     </div>
 </div>
 
 
 </body>
 </html>
+<script type="text/javascript">
+$('#btn').click(function(){
+    //前台首页统计数据展示
+    var address=$('#address').val();
+    var userID = window.parent.token.value;
+    //alert(address);
+    $.ajax({
+        url: "http://119.23.46.11/user/moneyadd",
+        data:{address:address,user_token:userID},
+        dataType: "json",
+        success: function(data){
+            if (data.status == 1) {
+                alert('充值成功');
+                window.parent.J_iframe.src = 'html/user.html';
+            }
+        }
+    })
+})
+</script>
