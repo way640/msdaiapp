@@ -37,12 +37,12 @@
 
             if(msg.status == 1){
 
-                if(msg.data.user_head != 'image/tou.png'){
+                if(!msg.data.user_head){
 
                      $('#user_head').attr('src', 'http://119.23.46.11/'+msg.data.user_head);
                 }
                
-                if(msg.data.user_name == ''){
+                if(!msg.data.user_name){
                     $('#user_name').html(msg.data.user_tel)
                 }else{
                     $('#user_name').html(msg.data.user_name)
