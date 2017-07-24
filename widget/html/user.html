@@ -23,7 +23,8 @@
 
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/jsapi.js"></script>
-<script type="text/javascript" src="js/corechart.js"></script>    
+<script type="text/javascript" src="js/corechart.js"></script>   
+
 <script>
 
 
@@ -36,12 +37,12 @@
 
             if(msg.status == 1){
 
-                if(msg.data.user_head != 'image/tou.png'){
+                if(!msg.data.user_head){
 
                      $('#user_head').attr('src', 'http://119.23.46.11/'+msg.data.user_head);
                 }
                
-                if(msg.data.user_name == ''){
+                if(!msg.data.user_name){
                     $('#user_name').html(msg.data.user_tel)
                 }else{
                     $('#user_name').html(msg.data.user_name)
@@ -79,8 +80,7 @@
 
   
 <script type="text/javascript" src="js/jquery.gvChart-1.0.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
-
+<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script> 
 
 <script type="text/javascript">
 gvChartInit();
@@ -161,7 +161,7 @@ $(document).ready(function(){
                 <tr>
                     <th>100</th>
                     <td><span id="td_money">100</span></td>
-                    <td><span id="td_leng">500</span></td>
+                    <td><span id="td_leng">100</span></td>
 
                 </tr>
             </tbody>
