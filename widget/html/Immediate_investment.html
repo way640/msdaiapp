@@ -12,7 +12,7 @@
 <script src="js/public.js"></script>
 </head>
 
-<body>
+<body style="height: 50px;">
 <!--项目详情-->
 <div class="projectd_f">
 	<div class="projectd_f_in">
@@ -33,72 +33,169 @@
                 <img src="image/biao.png"/>
                 <img src="image/biao2.png"/>
             </li>
-        	<!--<li>-->
-            	<!--<span>最低借款</span>-->
-                <!--<i>￥1000</i>-->
-            <!--</li>-->
-            <!--<li>-->
-            	<!--<span>可借金额</span>-->
-                <!--<i>￥1005544</i>-->
-            <!--</li>-->
+            <li>
+                <span>还款方式</span>
+                <i>
+                    <select id="huan">
+                        <option value="">请选择</option>
+                        <option value="1">每月还息</option>
+                        <option value="2">等额本息</option>
+                    </select>
+                </i>
+            </li>
+            <li>
+                <span>借款周期</span>
+                <i>
+                    <select id="zhou">
+                        <option value="">请选择</option>
+                        <option value="6">6个月</option>
+                        <option value="12">12个月</option>
+                    </select>
+                </i>
+            </li>
+            <li>
+                <span>总利息</span>
+                <i id="xi">
+                </i>
+            </li>
         </ul>
     </div>
 </div>
-<!--投注金额-->
+<!--借款金额-->
 <div class="amount_f">
 	<div class="amount_f_in">
-		<input type="text" value="" placeholder="可借金额/元" required>
+		<input type="text" value="" placeholder="借贷金额/元" required onkeyup='this.value=this.value.replace(/\D/gi,"")' id="jie">
     </div>
-    <!--预期收益-->
-    <div class="wcydl_f" style="width:94%;height:30px;margin:0 auto;line-height:30px;font-size:14px;">
-    <em style="font-style:normal;color:#999;">预期收益：</em><i style="font-style:normal;color:#999;">2000元</i>
+</div>
+<!--到款账户-->
+<div class="amount_f" style="display: none" id="dao">
+    <div class="amount_f_in">
+        <fon style="font-size: 8px; color: #7a869d">您所贷金额会存入您的余额中</fon><br>
     </div>
-    <!--可用余额和充值-->
-    <div class="kydye_cz">
-    	<em>可用余额:<font>￥1200</font></em>
-        <a href="#">充值</a>
-    </div>    
+</div>
+<div style="display: none;" id="ti">
+    <div class="amount_f_in">
+
+           <p style="font-size: 8px; color: #7a869d"> <input type="radio" id="ra" value="1">本人已阅读并同意签署《个人消费贷款合同》，报送相关信息至金融信用信息基础数据库</p>
+    </div>
+    <!--<a class="woxzjtl_f">立即借款</a>-->
 </div>
 <!--立即投标-->
-<a href="#" class="woxzjtl_f">立即借款</a>
+<div id="tu">
+    <a  class="woxzjtl_f" disabled style="background-color: #CDCDCD;">立即借款</a>
+</div>
+<div id="tu2" style="display: none">
+    <a  class="woxzjtl_f" id="dan">立即借款</a>
+</div>
 </body>
 </html>
 
 <script>
-    jQuery(document).ready(function(){
-        var src = window.location.href;
-        var I = src.substr(src.indexOf("?id=") + 4).length;
-        var T = src.indexOf("?id=");
-        if (0 >= T) return "";
-        if (I == src.length) return -1;
-        var ur = src.substr(src.indexOf("?id=") + 4);
+    //var userID=window.parent.token.value;
+    //从地址栏获取参数
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
 
-        var url = "http://119.23.46.11/investment/lenders";
+    //设定全局变量
+    var li=GetQueryString("li");
+    var ke=GetQueryString("ke");
+    var money=GetQueryString("money");
+    var id=GetQueryString("id");
+    var uname=GetQueryString("uname");
+
+    jQuery(document).ready(function(){
+        var str='';
+        str +='<div class="project_name_f"><div class="project_name_f_in">'+uname+'先生/女士放款&nbsp;&nbsp;￥'+money+'</div></div>';
+        $('#gu').after(str);
+    });
+
+
+    //总利息显示
+    $('#jie').keyup(function () {
+        li=li.replace(/[\-\_\,\!\|\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>\?]/g, '');
+        var jie=$('#jie').val();
+        var ll=(jie*(li/100)).toFixed(2);
+        var cha=jie-ke;
+
+        if(cha<=0)
+            {
+                if(jie!=0)
+                    {
+                        $('#dao').show();
+                        $('#ti').show();
+                        $('#xi').html(ll);
+                    }
+                else if (jie=='')
+                    {
+                        $('#dao').hide();
+                        $('#ti').hide();
+                        $('#tu').show();
+                        $('#tu2').hide();
+                        $("#ra").removeAttr('checked');
+                        $('#xi').html('');
+                    }
+            }
+        else
+            {
+                $('#jie').val('');
+                $('#xi').html('');
+                $('#dao').hide();
+                $('#tu').show();
+                $('#tu2').hide();
+                $('#ti').hide();
+                $("#ra").removeAttr('checked');
+                alert('请选择正确的金额');
+            }
+
+    });
+
+    //借款条例
+    $('#ra').click(function () {
+        var ra=$('#ra').val();
+        if(ra==1){
+            $('#tu2').show();
+            $('#tu').hide();
+        }
+    });
+
+    //立即借款
+    $('#dan').click(function () {
+        var huan=$('#huan').val();
+        var zhou=$('#zhou').val();
+        var jie=$('#jie').val();
+
+        var url = "http://119.23.46.11/investment/loang";
         $.ajax({
             type: "get",
             async: false,
             url: url,
             dataType: "jsonp",
-            jsonp: "callback",
-            jsonpCallback:"data",
+            jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+            jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
             data:{
-                "id":ur
+                "id":id,
+                "li":li,
+                "huan":huan,
+                "zhou":zhou,
+                "jie":jie
             },
             success: function(data){
-                var str='';
-                $.each(data.data,function(k,v){
-                    str +='<div class="project_name_f"><div class="project_name_f_in">';
-                    str +='合同&nbsp;&nbsp;'+v.lenging_no+'</div></div>';
-//                    str +='</li><li><span>还款方式</span><i>一次性还款</i></li><li>';
-//                    str +='<span>借款用途</span><i>生意周转</i></li><li><span>剩余时间</span>';                           str +='<i style="color:#3DB1FA">'+v.day+'天</i></li></ul></div></div>';
-                });
-                $('#gu').after(str);
+                if(data.code==1){
+                    alert('借款申请已提交,请您耐心等待');
+                }else if(data.code==0){
+                    alert('借款申请未提交,请重新填写');
+                }
+
             },
             error: function(){
                 alert('fail');
             }
         });
-    });
+    })
 </script>
     
 

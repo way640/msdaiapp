@@ -204,7 +204,7 @@ $(function(){
                     str +='<span>这是土豪标</span></div>';
                     str +='<div class="novice_zs_f_in_l_bottom"><ul>';
                     str +='<li class="mark1_f">';
-                    str +='<em>'+v.lenging_interest+'</em>';
+                    str +='<em>'+v.lenging_interest+'%</em>';
                     str +='<p>年利率</p></li>';
                     str +='<li class="mark2_f">';
                     str +='<em>'+v.time+'<font>个月</font></em>';
@@ -222,15 +222,6 @@ $(function(){
             })
             //alert(str);
             $('#lbox').html(str);
-        }
-    })
-})
-$(function(){
-    $.ajax({
-        url:"http://119.23.46.11/investment/loa",
-        dataType:'json',
-        success:function(msg){
-            // alert( "Data Saved: " + msg );
         }
     })
 })
