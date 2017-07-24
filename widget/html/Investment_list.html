@@ -40,47 +40,58 @@
         </div>
 
         <script>
-jQuery(document).ready(function(){
-    var url = "http://119.23.46.11/investment/loand";
-    $.ajax({
-        type: "get",
-        async: false,
-        url: url,
-        dataType: "jsonp",
-        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-        jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
-        success: function(data){
-            var str='';
-            if(data.code==1){
-                $.each(data.data,function(k,v){
-                    var ke=v.lenging_money-v.lenging_borrow;
-                    var bai=Math.round((ke/v.lenging_money)*100);
-                    str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
-                    str +='<input type="hidden" value="'+v.lenging_id+'" id="hidd">';
-                    str +='<div class="novice_zs_f_in_l"><div class="novice_zs_f_in_l_top">';
-                    str +='<img src="image/biao.png"/><span>壕气冲天</span></div>';
-                    str +='<div class="novice_zs_f_in_l_bottom"><ul><li class="mark1_f"><em>'+v.lenging_interest+'%</em>';
-                    str +=' <p>年利率</p></li><li class="mark2_f"><em>'+v.time+'<font>个月</font></em><p>期限</p>';
-                    str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
-                    str +='</li><li class="mark4_f"><span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
-                    str +='<p>'+bai+'%</p></span></li></ul></div></div>';
-                    str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
-                    str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span></div></a></div>';
-                });
-                $('#tbody').html(str);
+    jQuery(document).ready(function(){
+        var url = "http://119.23.46.11/investment/loand";
+        $.ajax({
+            type: "get",
+            async: false,
+            url: url,
+            dataType: "jsonp",
+            jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+            jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+            success: function(data){
+                var str='';
+                if(data.code==1){
+                    $.each(data.data,function(k,v){
+                        var ke=v.lenging_money-v.lenging_borrow;
+                        var bai=Math.round((ke/v.lenging_money)*100);
+                        str +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                        str +='<input type="hidden" value="'+v.lenging_id+'" id="hidd">';
+                        str +='<div class="novice_zs_f_in_l"><div class="novice_zs_f_in_l_top">';
+                        str +='<img src="image/biao.png"/><span>壕气冲天</span></div>';
+                        str +='<div class="novice_zs_f_in_l_bottom"><ul><li class="mark1_f"><em>'+v.lenging_interest+'%</em>';
+                        str +=' <p>年利率</p></li><li class="mark2_f"><em>'+v.time+'<font>个月</font></em><p>期限</p>';
+                        str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
+                        str +='</li><li class="mark4_f"><span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
+                        str +='<p>'+bai+'%</p></span></li></ul></div></div>';
+                        if(ke==0)
+                            {
+                                str += '<div class="novice_zs_f_in_r"><span style=" background:url(image/lijitoubiao2.png) no-repeat center"></span></div>';
+                            }
+                        else
+                            {
+                                str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                                str +='<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                            }
+                         str +='</div></a></div>'
+                    });
+
+
+                    $('#tbody').html(str);
+                }
+                else if(data.code==0)
+                {
+                    alert('请求失败');
+                }
+            },
+            error: function(){
+                alert('fail');
             }
-            else if(data.code==0)
-            {
-                alert('请求失败');
-            }
-        },
-        error: function(){
-            alert('fail');
-        }
+        });
     });
-});
 
 
+    //借款列表导航栏点击事件
    $('#xin,#di,#duo,#ling').click(function () {
        var val=$(this).val();
        var url = "http://119.23.46.11/investment/loand";
@@ -109,8 +120,16 @@ jQuery(document).ready(function(){
                        str +='</li><li class="mark3_f"><em><font>￥</font>'+v.lenging_money+'</em><p>投资金额</p>';
                        str +='</li><li class="mark4_f"><span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
                        str +='<p>'+bai+'%</p></span></li></ul></div></div>';
-                       str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
-                       str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span></div></a></div>';
+                       if(ke==0)
+                       {
+                           str += '<div class="novice_zs_f_in_r"><span style=" background:url(image/lijitoubiao2.png) no-repeat center"></span></div>';
+                       }
+                       else
+                       {
+                           str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                           str +='<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                       }
+                       str +='</div></a></div>'
                    });
                    $('#tbody').html(str);
                }
