@@ -84,7 +84,7 @@ document.getElementById("btn").onclick=function(){time(this);}
                 dataType:'json',
                 success:function(data){
                   if(data.status == 1){
-                        location.href='index.html';
+                        window.parent.J_iframe.src = 'html/login.html';
                   }else{
                      alert(data.msg)
                   }

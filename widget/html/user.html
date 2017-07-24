@@ -28,9 +28,7 @@
 <script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
 
 <script>
-$(function(){
 
-    var str = ''
 
     $.ajax({
         type:'GET',
@@ -43,16 +41,30 @@ $(function(){
 
                 $('#user_head').attr('src', msg.data.user_head);
                 if(msg.data.user_account == ''){
-                    $('#user_name').val(msg.data.user_tel)
+                    $('#user_name').html(msg.data.user_tel)
                 }else{
-                    $('#user_name').val(msg.data.user_account)
+                    $('#user_name').html(msg.data.user_account)
                 }
                 
-                str = "<table id='myTable5' style='display:none;'><thead><tr><th>进账资金</th><th>出账资金</th></tr></thead>";
-                str += "<tbody><tr><td>"+msg.data.roll_in+"</td>"
-                str += "<td>"+msg.data.roll_out+"</td></tr></tbody></table>"
+                if(!msg.data.user_money){
+                    var user_money = 0;
+                }else{
+                    var user_money = msg.data.user_money
+                }
+                if(!msg.data.user_leng){
+                    var user_leng = 0;
+                }else{
+                    var user_leng = msg.data.user_leng
+                }
+                
+                $('#td_money').html(user_money)
+                $('#td_leng').html(user_leng)
 
-                $('#chartShow').html(str);
+                $('#user_money').html(user_money);
+                $('#user_leng').html(user_leng);
+
+                var moneyall = parseInt(user_leng) + parseInt(user_money)
+                $('#money_all').html('账户总额：￥'+moneyall.toFixed(2)) 
 
             }else{
 
@@ -61,7 +73,7 @@ $(function(){
         }
     })
 
-})
+
 </script>
 
 <script type="text/javascript">
@@ -99,7 +111,7 @@ $(document).ready(function(){
     	<img src="image/tou.png">
         <div class="us_yong">
         	<span>欢迎您，<span id="user_name"></span><img src="image/vipdbj.png"/ style="width:20px;height:20px;float:left;padding:0;margin-top:5px; margin-right:0; margin-bottom:0;"></span>
-            <span>账户总额：￥12133132</span>
+            <span id="money_all"></span>
             
         </div>
     </a>
@@ -118,12 +130,12 @@ $(document).ready(function(){
 
         <div class="us_ke">
         	<span style="border-right:1px solid #dcdcdc;">
-            	<i>可用余额（元）</i>
-                <em>134543</em>
+            	<i>流动资产（元）</i>
+                <em id="user_money"></em>
             </span>
             <span>
-            	<i>冻结总额（元）</i>
-                <em>134543</em>
+            	<i>固定资产（元）</i>
+                <em id="user_leng"></em>
             </span>
         </div>
     </div> 
@@ -132,29 +144,17 @@ $(document).ready(function(){
             <thead>
                 <tr>
                     <th></th>
-                    <th>河北</th>
-                    <th>河南</th>
-                    <th>湖北</th>
-                    <th>湖南</th>
-                    <th>山东</th>
-                    <th>山西</th>
-                    <th>北京</th>
-                    <th>上海</th>
-                    <th>sddf</th>
+                    <th>流动资产</th>
+                    <th>固定资产</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th></th>
-                    <td>500</td>
-                    <td>300</td>
-                    <td>150</td>
-                    <td>180</td>
-                    <td>120</td>
-                    <td>180</td>
-                    <td>120</td>
-                    <td>500</td>
+                    <th>100</th>
+                    <td><span id="td_money">500</span></td>
+                    <td><span id="td_leng">500</span></td>
+
                 </tr>
             </tbody>
         </table>  
@@ -162,8 +162,8 @@ $(document).ready(function(){
 
 </div>
 <div class="us_rec">
-    <span><a href="recharge.html">充值</a></span>
-    <span><a href="withdraw.html" style="background:#fff; border:1px solid #29a7e2; color:#29a7e2;">提现</a></span>
+    <span><a href="html/cz.html">充值</a></span>
+    <span><a href="html/withdraw.html" style="background:#fff; border:1px solid #29a7e2; color:#29a7e2;">提现</a></span>
 </div>
 <!--微信部分-->
 <div class="xinfuer_t">

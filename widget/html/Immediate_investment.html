@@ -91,7 +91,6 @@
 </html>
 
 <script>
-    //var userID=window.parent.token.value;
     //从地址栏获取参数
     function GetQueryString(name)
     {
@@ -107,9 +106,15 @@
     var id=GetQueryString("id");
     var uname=GetQueryString("uname");
 
+    //判断用户是否登录
+    var userID=window.parent.token.value;
+    if(userID==''){
+        window.location.href="html/login.html";
+    }
+
     jQuery(document).ready(function(){
         var str='';
-        str +='<div class="project_name_f"><div class="project_name_f_in">'+uname+'先生/女士放款&nbsp;&nbsp;￥'+money+'</div></div>';
+        str +='<div class="project_name_f"><div class="project_name_f_in">'+uname+'先生/女士放款&nbsp;&nbsp;剩余￥'+ke+'</div></div>';
         $('#gu').after(str);
     });
 
@@ -164,6 +169,7 @@
 
     //立即借款
     $('#dan').click(function () {
+        var userID=window.parent.token.value;
         var huan=$('#huan').val();
         var zhou=$('#zhou').val();
         var jie=$('#jie').val();
@@ -181,11 +187,13 @@
                 "li":li,
                 "huan":huan,
                 "zhou":zhou,
-                "jie":jie
+                "jie":jie,
+                "uid":userID
             },
             success: function(data){
                 if(data.code==1){
                     alert('借款申请已提交,请您耐心等待');
+                    window.location.href="html/user.html";
                 }else if(data.code==0){
                     alert('借款申请未提交,请重新填写');
                 }

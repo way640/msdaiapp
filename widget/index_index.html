@@ -56,7 +56,7 @@ $(function(){
         <ul>
         	<li><a href="#">公告1：7月25号马上贷APP正式上线</a></li>
             <li><a href="#">公告2: 7月18号马上贷开始开发APP</a></li>
-            <li><a href="html/about.html">公告3: 公司简介</a></li>
+            <li><a href="#">公告3: 公司简介</a></li>
         </ul>
     </div>
 </div>
@@ -105,6 +105,8 @@ $(function(){
     var this_w=$(".xinfuer_t").width()/3+'px';
     $(".xinfuer_t a").css({height:this_w,width:this_w});
 </script>
+
+
 <!--新手专区标题-->
 <div class="novice_f">
     <div class="novice_f_in">
@@ -116,42 +118,15 @@ $(function(){
 <div class="novice_zs_f">
     <div class="novice_zs_f_in">
     <!--left-->
-        <div class="novice_zs_f_in_l">
-            <!--top-->
-            <div class="novice_zs_f_in_l_top">
-                <img src="image/biao5.png"/>
-                <span>测试标不要投</span>
-            </div>
-            <!--bottom-->
-            <div class="novice_zs_f_in_l_bottom">
-                <ul>
-                    <li class="mark1_f">
-                        <em>12.00%</em>
-                        <p>年利率</p>
-                    </li>
-                    <li class="mark2_f">
-                        <em>3<font>个月</font></em>
-                        <p>期限</p>
-                    </li>
-                    <li class="mark3_f">
-                        <em><font>￥</font>20.10<font>万</font></em>
-                        <p>投资金额</p>
-                    </li>
-                    <li class="mark4_f">
-                        <span>
-                            <img src="image/redbl.png"/ style="height:50%;">
-                            <p>50%</p>
-                        </span>
-                    </li>
-                </ul>
-            </div>
+        
+        <div class="fourcp_1" id='xbox'>
+            
         </div>
-    <!--right-->
-        <a href="html/Investment_details.html"><div class="novice_zs_f_in_r">
-            <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>
-        </div></a>
     </div>
 </div>
+
+
+
 <!--借款列表-->
 <div class="novice_f">
     <div class="novice_f_in">
@@ -214,14 +189,67 @@ $(function(){
                     str +='<p>投资金额</p></li>';
                     str +='<li class="mark4_f">';
                     str +='<span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
-                    str +='<p>'+bai+'%</p></span></li></ul></div></div><a href="html/Investment_details.html?id='+v.lenging_id+'">';
-                    str +=' <div class="novice_zs_f_in_r">';
-                    str +=' <span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                    str +='<p>'+bai+'%</p></span></li></ul></div></div>';
+                    if(ke==0)
+                            {
+                                str += '<div class="novice_zs_f_in_r"><span style=" background:url(image/lijitoubiao2.png) no-repeat center"></span></div>';
+                            }
+                        else
+                            {
+                                str +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                                str +='<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                            }
                     str +='</div></a></div>';
                 
             })
             //alert(str);
             $('#lbox').html(str);
+        }
+    })
+    //前台首页新手列表展示
+    $.ajax({
+        url: "http://119.23.46.11/investment/loa",
+        dataType: "json",
+        success: function(data){
+         //alert( data );
+         var str1='';
+            $.each(data.data,function(k,v){
+                if (k==2) {
+                    var ke=v.lenging_money-v.lenging_borrow;
+                    var bai=Math.round((ke/v.lenging_money)*100);
+                    str1 +='<div class="novice_zs_f_in" style="margin-bottom: 10px;">';
+                    str1 +='<div class="novice_zs_f_in_l">';
+                    str1 +='<div class="novice_zs_f_in_l_top">';
+                    str1 +='<img src="image/biao5.png"/>';
+                    str1 +='<span>这是新手标</span></div>';
+                    str1 +='<div class="novice_zs_f_in_l_bottom"><ul>';
+                    str1 +='<li class="mark1_f">';
+                    str1 +='<em>'+v.lenging_interest+'%</em>';
+                    str1 +='<p>年利率</p></li>';
+                    str1 +='<li class="mark2_f">';
+                    str1 +='<em>'+v.time+'<font>个月</font></em>';
+                    str1 +='<p>期限</p></li>';
+                    str1 +='<li class="mark3_f">';
+                    str1 +='<em><font>￥</font>'+v.lenging_money+'</em>';
+                    str1 +='<p>投资金额</p></li>';
+                    str1 +='<li class="mark4_f">';
+                    str1 +='<span><img src="image/redbl.png"/ style="height:'+bai+'%;">';
+                    str1 +='<p>'+bai+'%</p></span></li></ul></div></div>';
+                    if(ke==0)
+                            {
+                                str1 += '<div class="novice_zs_f_in_r"><span style=" background:url(image/lijitoubiao2.png) no-repeat center margin-left:10px" ></span></div>';
+                            }
+                        else
+                            {
+                                str1 +=' <a href="html/Investment_details.html?id='+v.lenging_id+'" id="xiang"><div class="novice_zs_f_in_r">';
+                                str1 +='<span style=" background:url(image/lijitoubiao.png) no-repeat center"></span>';
+                            }
+                    str1 +='</div></a></div>';
+                }
+                
+            })
+            //alert(str1);
+            $('#xbox').html(str1);
         }
     })
 })
