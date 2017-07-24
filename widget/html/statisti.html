@@ -60,6 +60,11 @@
                                         async:false,
                                         dataType:"json",
                                         success:function(data) {
+                                            if(data.status == 0){
+                                                location.href='html/login.html';
+                                            }else {
+                                                alert(data.msg);
+                                            }
                                             $.each(data.data.roll_in,function(k,v){
                                                 $("#roll_account").html( v.roll_account );
                                                 $("#roll_money").html(v.roll_money);
