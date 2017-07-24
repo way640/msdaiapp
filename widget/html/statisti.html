@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>信富平台</title>
+<title>马上贷</title>
 <base href="../">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
@@ -10,6 +10,13 @@
 
 
 <script type="text/javascript" src="js/jquery.js"></script>
+    <script>
+        var token = window.parent.token.value;
+        if(!token){
+            alert('请先登录');
+            window.parent.J_iframe.src = 'html/login.html';
+        }
+    </script>
 </head>
 
 <body>
@@ -19,7 +26,7 @@
 <div class="top">
 	<div class="box">
         <a href="user.html" class="return"><img src="image/return.png"></a>
-        债权转让    
+        资金统计
     </div>
 </div>
 
@@ -39,16 +46,21 @@
     <div class="list" style="margin-top:0;">
         <ul class="yiji">
             <li>
-            	<a href="#" class="inactive" style="background:none; padding:0;">
-                	<div class="box">
+            	<a href="#" id="roll_in" class="inactive" style="background:none; padding:0;">
+
                         <script src="js/jquery-1.11.0.min.js"></script>
+
                         <script>
                             $(function(){
                                 $('.cl_nav').click(function(){
+
+                                    var str = '<div class="box">'
+                                    var str1 = '<div class="box">'
                                     $.ajax({
                                         url:'http://119.23.46.11/user/moneyinfo',
                                         type:'GET',
                                         data:{
+                                            user_token:token,
                                             roll_account:$("roll_account").val(),
                                             roll_id:$("roll_id").val(),
                                             user_id:$("user_id").val(),
@@ -61,21 +73,33 @@
                                         dataType:"json",
                                         success:function(data) {
                                             $.each(data.data.roll_in,function(k,v){
-                                                $("#roll_account").html( v.roll_account );
-                                                $("#roll_money").html(v.roll_money);
-                                                $("#roll_time").html(v.roll_time);
-                                                $("#roll_way").html(v.roll_way);
+
+                                                 str += '<span>'+ v.roll_account+'</span>'
+                                                 str += '<span>'+ v.roll_in+'</span>'
+                                                 str += '<span>'+ v.roll_time+'</span>'
+                                                 str += '<span>'+ v.roll_type+'</span>'
                                             });
+                                            str += '</div>'
+
+                                            $('#roll_in').html(str)
+
+                                            $.each(data.data.roll_out,function(k1,v1){
+
+                                                str1 += '<span>'+ v1.roll_account+'</span>'
+                                                str1 += '<span>'+ v1.roll_money+'</span>'
+                                                str1 += '<span>'+ v1.roll_time+'</span>'
+                                                str1 += '<span>'+ v1.roll_type+'</span>'
+                                            });
+
+                                            str1 += '</div>'
+
+                                            $('#roll_out').html(str1)
                                         }
                                     });
                                 });
                             });
                         </script>
-                        <span id="roll_account"></span>
-                        <span id="roll_money"></span>
-                        <span id="roll_time"></span>
-                        <span id="roll_way"></span>
-                    </div>
+
                 </a>
                 <ul style="display: none">
                     <li style=" overflow:hidden;">
@@ -97,49 +121,46 @@
 <div class="cl_list cl_l3">
 	<div class="con_title">
         <div class="box">
-        	<span style="width:25%;">标题</span>
-            <span style="width:25%;">债权总值</span>
-            <span style="width:25%;">转让价格</span>
-            <span style="width:25%;">操作</span>
+            <span style="width:25%;">充值用户</span>
+            <span style="width:25%;">充值金额</span>
+            <span style="width:25%;">充值时间</span>
+            <span style="width:25%;">充值类型</span>
         </div>
     </div>
     <div class="list" style="margin-top:0;">
         <ul class="yiji">
             <li>
-            	<a href="#" class="inactive" style="background:none; padding:0;">
-                	<div class="box">
+            	<a href="#" id="roll_out" class="inactive" style="background:none; padding:0;">
+
                         <script src="js/jquery-1.11.0.min.js"></script>
                         <script>
-                            $(function(){
-                                $(".cl_nav").click(function(){
-                                    $.ajax({
-                                        url:'http://119.23.46.11/user/moneyinfo',
-                                        type:'GET',
-                                        data:{
-                                            aa:$().val(),
-                                            ss:$().val(),
-                                            dd:$().val(),
-                                            ff:$().val()
-                                        },
-                                        async:false,
-                                        dataType:"json",
-                                        success:function(data){
-                                            $.each(data.data.roll,function(k,v){
-                                                $("").html();
-                                                $("").html();
-                                                $("").html();
-                                                $("").html();
-                                            });
-                                        }
-                                    });
-                                });
-                            });
+//                            $(function(){
+//                                $(".cl_list").click(function(){
+//                                    $.ajax({
+//                                        url:'http://119.23.46.11/user/moneyinfo',
+//                                        type:'GET',
+//                                        data:{
+//                                            user_token:token,
+//                                            roll_account:$("roll_account").val(),
+//                                            roll_in:$("roll_in").val(),
+//                                            roll_money:$("roll_money").val(),
+//                                            roll_way:$("roll_way").val()
+//                                        },
+//                                        async:false,
+//                                        dataType:"json",
+//                                        success:function(data){
+//                                            $.each(data.data.roll_out,function(k,v){
+//                                                $("#roll_account").html( v.roll_account );
+//                                                $("#roll_in").html(v.roll_in);
+//                                                $("#roll_money").html(v.roll_money);
+//                                                $("#roll_way").html(v.roll_way);
+//                                            });
+//                                        }
+//                                    });
+//                                });
+//                            });
                         </script>
-                        <span id=""></span>
-                        <span id=""></span>
-                        <span id=""></span>
-                        <span id=""></span>
-                    </div>
+
                 </a>
                 <ul style="display: none">
                     <li style=" overflow:hidden;">

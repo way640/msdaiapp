@@ -20,6 +20,15 @@
 
 
 <script>
+
+var user_Boolean   = false;
+
+var email_Boolean  = false;
+var card_Boolean   = false;
+var addr_Boolean   = false; 
+
+var paypwd_Boolean = false;
+
 $(function(){
     
     var userID = window.parent.token.value;
@@ -32,14 +41,36 @@ $(function(){
         success:function(msg){
 
             if(msg.status == 1){
+                
+                if(msg.data.user_head != 'image/tou.png'){
 
-                $('#user_head').attr('src', msg.data.user_head);
-                $('#user_account').val(msg.data.user_account);
-                $('#user_tel').html(msg.data.user_tel);
+                    $('#user_head').attr('src', 'http://119.23.46.11/'+msg.data.user_head);
+                }
+
+                $('#user_name').val(msg.data.user_name);
+                $('#user_tel').attr('placeholder',msg.data.user_tel);
                 $('#user_email').val(msg.data.user_email);
                 $('#user_card').val(msg.data.user_card);
                 $('#user_paypwd').val(msg.data.user_paypwd);
                 $('#user_addr').val(msg.data.user_addr);
+
+
+                if(msg.data.user_name != ''){
+                    user_Boolean   = true;
+                }
+                if(msg.data.user_email != ''){
+                    email_Boolean   = true;
+                }
+                if(msg.data.user_card != ''){
+                    card_Boolean   = true;
+                }
+                if(msg.data.user_paypwd != ''){
+                    paypwd_Boolean   = true;
+                }
+                if(msg.data.user_addr != ''){
+                    addr_Boolean   = true;
+                }
+
 
             }else{
 
@@ -69,7 +100,7 @@ $(function(){
     <br>
     	<ul>
             <center>
-                <a href="html/cut_avatar.html" target="_blank"><img id="user_head" src="" style="height:100px"></a>
+                <a href="html/cut_avatar.html"><img id="user_head" src="image/tou.png" style="height:100px;border-radius:50% 50% 50% 50%"></a>
             </center>
             <br>
 <!--     <li>
@@ -79,12 +110,12 @@ $(function(){
     </li> -->
             <li>
                 <span>用户名</span>
-                <i><input type="text" id="user_name" name="user_name" vlaue="" placeholder="请输入4-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_name" name="user_name" vlaue="" placeholder="请输入2-8位字符" class="reg_user" style="position:relative;right:22%;"></i><span class="user_hint" style="position:absolute;right:8%"></span>
             </li>
             <br>
             <li>
             	<span>手机号</span>
-                <i><input type="text" id="user_tel" name="user_tel" placeholder="15912341234" placeholder="请输入手机号" disabled class="reg_tel" style="position:relative;right:22%;"></i><span class="tel_hint" style="position:absolute;right:8%"></span>
+                <i><input type="text" id="user_tel" name="user_tel" placeholder="" placeholder="请输入手机号" disabled class="reg_tel" style="position:relative;right:22%;"></i><span class="tel_hint" style="position:absolute;right:8%"></span>
               <!-- <i><input type="text" value="17601112526"><font id="user_tel" style="position:relative;right:22%;display:inline-block;"></font></i> -->
             </li>
             <br>
@@ -127,18 +158,11 @@ $(function(){
 
 <script>
 
-var user_Boolean   = false;
-
-var email_Boolean  = false;
-var card_Boolean   = false;
-var addr_Boolean   = false; 
-
-var paypwd_Boolean = false;
 
 //正则判断用户名是否正确
 $('.reg_user').blur(function(){
   
-    if ((/^[\u4e00-\u9fa5a-zA-Z\d]{4,8}$/).test($(".reg_user").val())){
+    if ((/^[\u4e00-\u9fa5a-zA-Z\d]{2,8}$/).test($(".reg_user").val())){
         $('.user_hint').html("✔").css("color","green");
         user_Boolean = true;
     }else {
@@ -196,6 +220,14 @@ $('#reset').click(function(){
         return false;
     }else{
         $("input").attr("value","");
+
+        user_Boolean   = false;
+
+        email_Boolean  = false;
+        card_Boolean   = false;
+        addr_Boolean   = false; 
+
+        paypwd_Boolean = false;
     }
 });
 
@@ -210,20 +242,10 @@ $('#back').click(function(){
 
 $('#save').click(function(){
     
-    if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean == true){
-        
-        if(paypwd_Boolean == false){
-            
-            var statu = confirm("您的支付密码填写不正确，是否保存其他数据?");
-            if(!statu){
-                $('#reg_paypwd').attr('value', "");
-                return false;
-            }else{
-                sendInfo()
-            }
-        }else{
-            sendInfo()
-        }
+    if(user_Boolean && email_Boolean && card_Boolean && addr_Boolean && paypwd_Boolean == true){
+
+        sendInfo()
+
     }else{
         alert("请在您提交修改前确认您的信息是否填写正确");
     }
@@ -231,6 +253,7 @@ $('#save').click(function(){
 
 function sendInfo(){
 
+    var userID       = window.parent.token.value;
     var user_name    = $('#user_name').val();
     var user_email   = $('#user_email').val();
     var user_card    = $('#user_card').val();
@@ -240,12 +263,16 @@ function sendInfo(){
     $.ajax({
         type:'POST',
         url:"http://119.23.46.11/user/updateuserinfo",
-        data:'user_name='+user_name+"&user_email="+user_email+"&user_card="+user_card+"&user_addr="+user_addr+"&user_paypwd="+user_paywpd,
+        data:'user_name='+user_name+"&user_email="+user_email+"&user_card="+user_card+"&user_addr="+user_addr+"&user_paypwd="+user_paywpd+"&user_token="+userID,
         dataType:'json',  
         success:function(msg){
 
             if(msg.status == 1){
-                alert('已成功保存修改');
+                if(msg.msg != '请求成功'){
+                    alert(msg.msg);
+                }else{
+                    alert('已成功保存修改');
+                }
                 history.go(-1);
             }else{
                 alert('页面加载失败，请重试');
