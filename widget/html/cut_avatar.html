@@ -81,16 +81,19 @@ $("#clipArea").photoClip({
 <script>
 	$('#submitimg').on('click', function(){
 
+        var userID = window.parent.token.value;
+
 		$.ajax({
             type:'POST',
             url:"http://119.23.46.11/user/userimg",
-            data:'img='+imgUrl,
+            data:'img='+imgUrl+'&user_token='+userID,
             dataType:'json',
             success:function(msg){
 
                 if(msg.status == 1){
 
-                    console.log(msg)
+                    alert('头像已成功上传！');
+                    history.go(-1)
                 }else{
 
                     alert('页面加载失败，请重试！')
@@ -254,14 +257,14 @@ $(".file-3").parents(".uploader").find(".filename").val(subUrl);
 </script>
 <script type="text/javascript">
 function setImagePreview() {
-	var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
-			picture = file_head.value;
-	if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+	var preview, img_txt, localImag, file_head = document.getElementById("file"),picture = file_head.value;
+	if (0==1) return alert("您上传的图片格式不正确，请重新选择！"),
 			!1;
-	if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+	if (preview = document.getElementById("view"), file_head.files && file_head.files[0]) 
+		preview.style.display = "block",
 			preview.style.width = "100px",
 			preview.style.height = "100px",
-			preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+			preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.URL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
 	else {
 		file_head.select(),
 				file_head.blur(),
@@ -279,7 +282,7 @@ function setImagePreview() {
 		preview.style.display = "none",
 				document.selection.empty()
 	}
-	return document.getElementById("DivUp").style.display = "block",
+	return document.getElementById("view").style.display = "block",
 			!0
 }
 </script>

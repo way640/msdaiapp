@@ -11,6 +11,16 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script type="text/javascript" src="js/jquery.js"></script>
 
+    <script>
+        var userID = window.parent.token.value
+
+        if(userID == ''){
+
+            alert('请先登录！');
+            window.parent.J_iframe.src = 'html/login.html';
+        }
+    </script>
+
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/jsapi.js"></script>
 <script type="text/javascript" src="js/corechart.js"></script>      
@@ -19,10 +29,13 @@
 
 <script>
 $(function(){
-    
+
+    var str = ''
+
     $.ajax({
         type:'GET',
         url:"http://119.23.46.11/user/backuserinfo",
+        data:'user_token='+userID,
         dataType:'json',
         success:function(msg){
 
@@ -35,6 +48,12 @@ $(function(){
                     $('#user_name').val(msg.data.user_account)
                 }
                 
+                str = "<table id='myTable5' style='display:none;'><thead><tr><th>进账资金</th><th>出账资金</th></tr></thead>";
+                str += "<tbody><tr><td>"+msg.data.roll_in+"</td>"
+                str += "<td>"+msg.data.roll_out+"</td></tr></tbody></table>"
+
+                $('#chartShow').html(str);
+
             }else{
 
                 alert('页面加载失败，请重试！')
@@ -108,8 +127,8 @@ $(document).ready(function(){
             </span>
         </div>
     </div> 
-    <div class="us_ke">
-        <table id='myTable5' style="display:none;">
+    <div class="us_ke" id="chartShow">
+        <table id='myTable5' style='display:none;'>
             <thead>
                 <tr>
                     <th></th>
@@ -155,25 +174,6 @@ $(document).ready(function(){
 </script>
 <!--占空部分-->
 <div class="zkdbfyi_f" style="width:100%; height:52px;"></div>
-<!--底部导航栏-->
-<div class="footerdhl_f">
-    <a href="index.html">
-        <b><img src="image/zhuye.png"/></b>
-        <p>首页</p>
-    </a>
-    <a href="html/Investment_list.html">
-    	<b><img src="image/touzi.png"/></b>
-        <p>投资</p>
-    </a>
-    <a href="html/user.html">
-    	<b class="movek_f"><img src="image/grzx.png"/></b>
-        <p>账户</p>
-    </a>
-    <a href="html/more.html">
-    	<b><img src="image/mores.png"/></b>
-        <p>更多</p>
-    </a>
-</div>
 <!--空格-->
 </body>
 </html>
