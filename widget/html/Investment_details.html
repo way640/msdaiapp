@@ -168,16 +168,17 @@ $(".mask_f_b").click(function(){
                 data:{
                     "id":ur
                 },
+
                 success: function(data){
                     var str='';
-                            $.each(data.data,function(k,v){
-                                str +='<div class="huankdxy_f"><table frame="hsides" rules="groups" border="1">';
+                    str +='<div class="huankdxy_f"><table frame="hsides" rules="groups" border="1">';
 
-                                str +='<tbody><tr><th>投标人</th><th>投标金额</th><th>投标方式</th><th>投标时间</th></tr>';
+                    str +='<tbody><tr><th>投标人</th><th>投标金额</th><th>投标方式</th><th>投标时间</th></tr>';
+                            $.each(data.data,function(k,v){
                                 str +='<tr><td>'+v.name+'</td><td><font style=" font-size:10px">￥</font>'+v.loan_money+'</td>';
                                 str +='<td>手动</td><td>'+v.time+'</td></tr>';
-                                str +='</tbody></table></div></div>';
                             });
+                    str +='</tbody></table></div></div>';
                     $('#tou').html(str);
                 },
                 error: function(){
