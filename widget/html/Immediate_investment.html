@@ -106,6 +106,12 @@
     var id=GetQueryString("id");
     var uname=GetQueryString("uname");
 
+    //判断用户是否登录
+    var userID=window.parent.token.value;
+    if(userID==''){
+        window.location.href="html/login.html";
+    }
+
     jQuery(document).ready(function(){
         var str='';
         str +='<div class="project_name_f"><div class="project_name_f_in">'+uname+'先生/女士放款&nbsp;&nbsp;剩余￥'+ke+'</div></div>';

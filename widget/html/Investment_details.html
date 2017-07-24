@@ -99,11 +99,6 @@ $(".mask_f_b").click(function(){
                if (I == src.length) return -1;
                var ur = src.substr(src.indexOf("?id=") + 4);
 
-           var userID=window.parent.token.value;
-           if(userID==''){
-               window.location.href="html/login.html";
-           }
-
            var url = "http://119.23.46.11/investment/lenders";
            $.ajax({
                type: "get",
