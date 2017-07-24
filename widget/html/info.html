@@ -250,7 +250,11 @@ function sendInfo(){
         success:function(msg){
 
             if(msg.status == 1){
-                alert('已成功保存修改');
+                if(msg.msg != '请求成功'){
+                    alert(msg.msg);
+                }else{
+                    alert('已成功保存修改');
+                }
                 history.go(-1);
             }else{
                 alert('页面加载失败，请重试');
