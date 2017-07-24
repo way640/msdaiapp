@@ -27,6 +27,21 @@
         <a href="html/register.html" class="register_f">注册</a>
         <img src="image/logo.png"/>
     </div>
+    <script type="text/javascript">
+    $(function(){
+        var userID = window.parent.token.value;
+        if(userID){
+            $('.login_f').html('账户');
+            $('.login_f').attr('href','html/user.html');
+            $('.register_f').html('注销');
+            $('.register_f').attr('href','javascript:void(0)');
+            $('.top_f').delegate('.register_f','click',function(){
+                window.parent.token.value = '';
+                window.parent.J_iframe.src = 'index_index.html';
+            });
+        }
+    })
+    </script>
 </div>
 
 <!--banner-->

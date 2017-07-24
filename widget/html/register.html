@@ -8,6 +8,8 @@
 <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
 
+<script src="js/jquery-1.11.0.min.js"></script>
+
 </head>
 
 <body style="background:#fff;">
@@ -33,24 +35,44 @@
             <div class="yan">
              <input type="button" id="btn" class="btn_mfyzm" value="获取验证码" />
 <script type="text/javascript">
-var wait=60;
-document.getElementById("btn").disabled = false;   
-function time(o) {
-		if (wait == 0) {
-			o.removeAttribute("disabled");           
-			o.value="获取验证码";
-			wait = 60;
-		} else {
-			o.setAttribute("disabled", true);
-			o.value="重新发送(" + wait + ")";
-			wait--;
-			setTimeout(function() {
-				time(o)
-			},
-			1000)
-		}
-	}
-document.getElementById("btn").onclick=function(){time(this);}
+$(function(){
+    var wait=60;
+    document.getElementById("btn").disabled = false;   
+    function time(o) {
+            if (wait == 0) {
+                o.removeAttribute("disabled");           
+                o.value="获取验证码";
+                wait = 60;
+            } else {
+                o.setAttribute("disabled", true);
+                o.value="重新发送(" + wait + ")";
+                wait--;
+                setTimeout(function() {
+                    time(o)
+                },
+                1000)
+            }
+        }
+    document.getElementById("btn").onclick=function(){
+        var address = $("#address").val();
+        if(address == ''){
+            alert('请输入手机号');
+        }else{
+            time(this);
+            $.ajax({
+                url:'http://119.23.46.11/user/sendmessage',
+                type:'GET',
+                data: {address:address},
+                dataType:'json',
+                success:function(data){
+                    if(data.status == '0'){
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }     
+});
 </script> 
       </div>
     </div>
@@ -67,7 +89,6 @@ document.getElementById("btn").onclick=function(){time(this);}
 </div>
 
 </body>
-<script src="js/jquery-1.11.0.min.js"></script>
 <script>
     $(function(){
         $('.lo_login').click(function(){
