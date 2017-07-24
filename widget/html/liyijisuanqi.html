@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+<base href="../">
+<meta charset="utf-8">
+<title>收益计算器</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/xinfugai.css">
+<link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
+<!-- <link rel="stylesheet" type="text/css" href="css/layer.css"> -->
+<!-- <script type="text/javascript" src="js/layer.js" ></script> -->
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<style type="text/css">
+td{
+    border:0px solid #fff;
+    border-bottom:1px solid #D3D3D3;
+}
+</style>
+<body >
+<!--top-->
+<div class="top">
+	<div class="box">
+        <a href="javascript:history.go(-1)" class="return" ><img src="image/return.png"></a>
+        收益计算    
+    </div>
+</div>
+
+<!--two选择-->
+<div class="twolcjsq_t">
+	<ul>
+    	<li class="tzjspg_t xfssb">借款计算</li>
+    </ul>
+</div>
+<!--two选择开始-->
+<div class="two_bg_t">
+	<div class="two_bg_t_in">
+    	<!--投资计算-->
+        <div class="tzjsq_t">
+            <p>
+            	<span>借款金额：</span>
+                <input type="text" style="width:34%;height:34px;border:1px solid #ccc;float:left;margin-top:19px;margin-right:15px;" id="amount"><em>元</em>
+            </p>
+            <p>
+                <span>借款期限：</span>
+                <input type="text" style="width:34%;height:34px;border:1px solid #ccc;float:left;margin-top:19px;margin-right:15px;" id="period"><em>月</em>
+            </p>
+            <p>
+                <span>年利率：</span>
+                <input type="text" style="width:34%;height:34px;border:1px solid #ccc;float:left;margin-top:19px;margin-right:15px;" id="rate"><em>%</em>
+            </p>
+            <p>
+            	<span>还款方式：</span>
+                <select style="width:75%;height:36px;border:1px solid #ccc;float:left;margin-top:19px;text-align:center" id='selc'>
+                    <option style="text-align:center" class="radiobox" value="t1">每月还息</option>
+                    <option style="text-align:center" class="radiobox" value="t2">等额本息</option>
+                </select>
+            </p>
+            <a id="calculate">开始计算</a>
+                
+            
+        </div>
+    </div>
+</div>
+<!--弹出的-->
+<div class="tancud_t" >
+    <!--借款计算器-->
+    <div class="tancud_t_2" style="width:100%;height:84%;overflow:scroll">
+        <p><span style="width:40%;height:36px;margin-right:10px;">预计本息收益(元)：</span><em id='ben_xi'></em></p>
+        <p><span style="width:40%;height:36px;margin-right:10px;">预计利息收益(元)：</span><em id='li_xi'></em></p>  
+        <center>
+            <div id='result' >
+
+            </div>
+        </table>
+        <div class="tuichu_t">返回</div>
+        </center>
+    </div>
+</div>
+<script>
+$(".twolcjsq_t ul li").click(function(){
+    $(this).addClass("xfssb").siblings().removeClass("xfssb");
+    })
+$(".tzjsjz_t").click(function(){
+    $(".jkjsq_t").css({display:"block"}).siblings().css({display:"none"})
+    }); 
+$(".tzjspg_t").click(function(){
+    $(".tzjsq_t").css({display:"block"}).siblings().css({display:"none"})
+    });
+$(".tzjsq_t a").click(function(){
+    $(".tancud_t").css({display:"block"});
+    $(".tancud_t_2").css({display:"block"}).siblings().css({display:"none"});
+    });
+$(".jkjsq_t a").click(function(){
+    $(".tancud_t").css({display:"block"});
+    $(".tancud_t_1").css({display:"block"}).siblings().css({display:"none"});
+    });
+$(".tuichu_t").click(function(){
+    $(".tancud_t,.tancud_t_1,.tancud_t_2").css({display:"none"})
+    })              
+</script>
+</body>
+</html>
+<script type="text/javascript">
+
+$("#amount").keyup(function(){
+    var amount = $("#amount").val();
+    if(isNaN(amount)) {
+        $("#amount").val(0);
+    }
+});
+
+
+$("#rate").keyup(function(){
+    var rate = $("#rate").val();
+    if(isNaN(rate)) {
+        $("#rate").val(0);
+    }
+});
+
+$("#period").keyup(function(){
+    var period = $("#period").val();
+    if(period%1 != 0) {
+        $("#period").val(0);
+    }
+});
+
+
+//计算
+$("#calculate").click(function(){
+    var amount = $("#amount").val().trim();
+    var rate = $("#rate").val().trim();
+    var period = $("#period").val().trim();
+    var type = $('#selc').val();
+    
+    amount = parseFloat(amount);
+    rate = parseFloat(rate);
+    period = parseFloat(period);
+
+    // if(amount<=0 || amount == '' || amount == null) {
+    //     layer.alert('请输入出借金额', {icon:2});
+    //     return false;
+    // }
+    
+    // if(rate <= 0 || rate == '' || rate == null) {
+    //     layer.alert('请输入年化利率', {icon:2});
+    //     return false;
+    // }
+    
+    // if(period <= 0 || period == '' || period == null) {
+    //     layer.alert('请输入出借时长', {icon:2});
+    //     return false;
+    // }
+
+    if(type == 't1') {
+        myhx(amount, rate, period);
+    } else {
+        debx(amount, rate, period);
+    }
+});
+
+//等额本息
+function debx(amount, rate, period) {
+    //每月还款金额
+    var month_rate = rate/100/12;
+    amount = parseFloat(amount);
+    var month_total = parseFloat(amount*month_rate*Math.pow((1+month_rate),period)/(Math.pow((1+month_rate), period)-1));
+    month_total = parseFloat(month_total.toFixed(2));
+    
+    var total_amount = parseFloat((month_total*period).toFixed(2));
+    var total_interest = parseFloat((total_amount-amount).toFixed(2));
+    total_amount = (total_amount == null || total_amount == '' || total_amount == 0) ? '0.00' : total_amount+'0.00';
+    total_interest = (total_interest == null || total_interest == '' || total_interest == 0) ? '0.00' : total_interest+'0.00';
+    
+    $("#ben_xi").html(formatMoney(total_amount.toString()));
+    $("#li_xi").html(formatMoney(total_interest.toString()));
+    
+    
+    var li = '<table cellspacing="2"><h1 style="text-align:center">详细还款计划</h1><tr style="text-align:center"><td>期限</td><td>时间</td><td>还款总额</td><td>本金</td><td>利息</td></tr>';
+    for(var i=1; i<=period; i++) {
+        //月还利息
+        var current_principal = parseFloat(amount*month_rate*Math.pow((1+month_rate), i-1)/(Math.pow((1+month_rate), period)-1));
+        var current_interest = parseFloat(month_total)-parseFloat(current_principal);
+        current_principal = current_principal.toFixed(2);
+        current_interest = current_interest.toFixed(2);
+        var date = getRefundDate(i);
+        
+        show_month_total = formatMoney(month_total);
+        show_current_principal = formatMoney(current_principal);
+        show_current_interest = formatMoney(current_interest);
+        
+        li += '<tr style="text-align:center"><td>第'+i+'期</td>';
+        li += '<td>'+date+'</td>';
+        li += '<td>'+show_month_total+'元</td>';
+        li += '<td>'+show_current_principal+'元</td>';
+        li += '<td>'+show_current_interest+'元</td></tr>';
+        
+    }
+    //alert(li);
+    $("#result").html(li);
+}
+
+//每月还息
+function myhx(amount, rate, period) {
+    amount = parseFloat(amount);
+    rate = parseFloat(rate);
+    period = parseInt(period);
+    //alert(amount)
+    var rate_amount = amount*rate/1200;
+    //四舍五入
+        rate_amount = rate_amount.toFixed(2);
+        rate_amount = parseFloat(rate_amount);
+    
+    var total_interest = rate_amount*period;
+    show_total_amount = parseFloat(total_interest)+amount;
+    $("#ben_xi").html(formatMoney(show_total_amount.toString()));
+    $("#li_xi").html(formatMoney(total_interest.toString()));
+    
+    //取日期
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth();
+    var date = myDate.getDate();
+    
+    var li = '<table cellspacing="2"><h1 style="text-align:center">详细还款计划</h1><tr style="text-align:center"><td>期限</td><td>时间</td><td>还款总额</td><td>本金</td><td>利息</td></tr>';
+    for(var i=1; i<=period; i++) {
+        var total_amount = rate_amount;
+        var principal = 0;
+        if(i == period) {
+            principal = amount;
+            total_amount += principal;
+        }
+        
+        var date_format = getRefundDate(i);
+        
+        total_amount_format = formatMoney(total_amount);
+        principal_format = formatMoney(principal);
+        rate_amount_format = formatMoney(rate_amount);
+        
+        li += '<tr style="text-align:center"><td>第'+i+'期</td>';
+        li += '<td>'+date_format+'</td>';
+        li += '<td>'+total_amount_format+'元</td>';
+        li += '<td>'+principal_format+'元</td>';
+        li += '<td>'+rate_amount_format+'元</td></tr>';
+    }
+    //alert(li)
+
+    $("#result").html(li);
+}
+
+
+//获取每一期的还款时间
+function getRefundDate(period) {
+    var date = new Date();
+    var new_date = new Date(date.setDate(date.getDate() + period*30));
+
+    var year = new_date.getFullYear();
+    var month = new_date.getMonth()+1;
+    var date = new_date.getDate();
+
+    return year+'-'+month+'-'+date;
+}
+
+//格式化资金
+function formatMoney(v) {  
+    if(isNaN(v)){  
+        return v;  
+    }  
+    v = (Math.round((v - 0) * 100)) / 100;  
+    v = (v == Math.floor(v)) ? v + ".00" : ((v * 10 == Math.floor(v * 10)) ? v  
+            + "0" : v);  
+    v = String(v);  
+    var ps = v.split('.');  
+    var whole = ps[0];  
+    var sub = ps[1] ? '.' + ps[1] : '.00';  
+    var r = /(\d+)(\d{3})/;  
+    while (r.test(whole)) {  
+        whole = whole.replace(r, '$1' + ',' + '$2');  
+    }  
+    v = whole + sub;  
+      
+    return v;  
+} 
+
+</script>
+
+    
+             
+       
+
