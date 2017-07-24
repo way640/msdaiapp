@@ -99,10 +99,10 @@ $(".mask_f_b").click(function(){
                if (I == src.length) return -1;
                var ur = src.substr(src.indexOf("?id=") + 4);
 
-//           var userID=window.parent.token.value;
-//           if(userID==''){
-//               window.location.href="html/login.html";
-//           }
+           var userID=window.parent.token.value;
+           if(userID==''){
+               window.location.href="html/login.html";
+           }
 
            var url = "http://119.23.46.11/investment/lenders";
            $.ajax({
@@ -121,7 +121,7 @@ $(".mask_f_b").click(function(){
 
                        $.each(data.data,function(k,v){
                            ta +='<div class="wnzims_f"><dl><dt>借款人信息</dt>';
-                           ta +='<dd>1.姓名：jian 年龄：27 籍贯：浙江江山 <br>2.借款说明：临时周转，以本人自己车辆抵押贷款25万元，一个月后归还。</dd></dl></div>';
+                           ta +='<dd>姓名：'+v.name+'  <br>电话：'+v.tel+'<br>邮箱：'+v.user_email+'<br>会员等级：3星会员</dd></dl></div>';
                            var ke=v.lenging_money-v.lenging_borrow;
                            var bai=Math.round((ke/v.lenging_money)*100);
                            str +='<div class="neirbg_f"><div class="neirbg_f_in"><h2>'+v.user_account+'先生/女士放款&nbsp;&nbsp;合同号&nbsp;'+v.lenging_no+'</h2>';
