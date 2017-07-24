@@ -25,7 +25,7 @@
 
 <div class="top">
 	<div class="box">
-        <a href="user.html" class="return"><img src="image/return.png"></a>
+        <a href="html/more.html" class="return"><img src="image/return.png"></a>
         资金统计
     </div>
 </div>
@@ -40,7 +40,7 @@
         	<span style="width:25%;">充值用户</span>
             <span style="width:25%;">充值金额</span>
             <span style="width:25%;">充值时间</span>
-            <span style="width:25%;">充值类型</span>
+            <span style="width:25%;">充值记录</span>
         </div>
     </div>
     <div class="list" style="margin-top:0;">
@@ -73,26 +73,22 @@
                                         dataType:"json",
                                         success:function(data) {
                                             $.each(data.data.roll_in,function(k,v){
-
-                                                 str += '<span>'+ v.roll_account+'</span>'
-                                                 str += '<span>'+ v.roll_in+'</span>'
+                                                 str += '<span>'+ v.roll_account+'</span>';
+                                                 str += '<span>'+ v.roll_in+'</span>';
                                                  str += '<span>'+ v.roll_time+'</span>'
-                                                 str += '<span>'+ v.roll_type+'</span>'
+                                                 str += '<span>'+ v.roll_id+'</span>'
                                             });
-                                            str += '</div>'
-
-                                            $('#roll_in').html(str)
+                                            str += '</div>';
+                                            $('#roll_in').html(str);
 
                                             $.each(data.data.roll_out,function(k1,v1){
 
-                                                str1 += '<span>'+ v1.roll_account+'</span>'
-                                                str1 += '<span>'+ v1.roll_money+'</span>'
-                                                str1 += '<span>'+ v1.roll_time+'</span>'
-                                                str1 += '<span>'+ v1.roll_type+'</span>'
+                                                str1 += '<span>'+ v1.roll_account+'</span>';
+                                                str1 += '<span>'+ v1.roll_money+'</span>';
+                                                str1 += '<span>'+ v1.roll_time+'</span>';
+                                                str1 += '<span>'+ v1.roll_id+'</span>'
                                             });
-
-                                            str1 += '</div>'
-
+                                            str1 += '</div>';
                                             $('#roll_out').html(str1)
                                         }
                                     });
@@ -121,10 +117,11 @@
 <div class="cl_list cl_l3">
 	<div class="con_title">
         <div class="box">
-            <span style="width:25%;">充值用户</span>
-            <span style="width:25%;">充值金额</span>
-            <span style="width:25%;">充值时间</span>
-            <span style="width:25%;">充值类型</span>
+            <span style="width:25%;">提现用户</span>
+            <span style="width:25%;">提现金额</span>
+            <span style="width:25%;">提现时间</span>
+            <span style="width:25%;">提现ID</span>
+
         </div>
     </div>
     <div class="list" style="margin-top:0;">
