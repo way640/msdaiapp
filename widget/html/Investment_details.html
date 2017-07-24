@@ -26,7 +26,7 @@
 	<div class="zslgxzx_f_in">
     	<ul>
         	<li class="addys_f3" id="loan">放款人信息</li>
-            <li id="lan">投标记录</li>
+            <li id="lan">借款记录</li>
         </ul>
     </div>
 </div>
@@ -90,6 +90,7 @@ $(".mask_f_b").click(function(){
 	$(".mask_f").css({display:"none"})
 	});
 
+        //页面刷新
        jQuery(document).ready(function(){
            //获取id值
                var src = window.location.href;
@@ -100,6 +101,7 @@ $(".mask_f_b").click(function(){
                var ur = src.substr(src.indexOf("?id=") + 4);
 
            var url = "http://119.23.46.11/investment/lenders";
+           var userID=window.parent.token.value;
            $.ajax({
                type: "get",
                async: false,
@@ -108,7 +110,8 @@ $(".mask_f_b").click(function(){
                jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
                jsonpCallback:"data",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
                data:{
-                   "id":ur
+                   "id":ur,
+                   "uid":userID
                },
                success: function(data){
                        var str='';
@@ -133,7 +136,7 @@ $(".mask_f_b").click(function(){
                            str +='<span>标的类型</span><img src="image/biao.png"/><img src="image/biao2.png"/>';
                            str +='</li><li><span>最低借款</span><i>￥1000</i></li><li>';
                            str +='<span>分期</span><i>支持</i></li><li><span>剩余时间</span>';                           str +='<i style="color:#3DB1FA">'+v.day+'天</i></li></ul></div></div>';
-                           str +='<a href="html/Immediate_investment.html?id='+v.lenging_id+'&li='+v.lenging_interest+'&ke='+ke+'&money='+v.lenging_money+'&uname='+v.user_account+'" class="lijitoubiaocx_f">立即借款</a>';
+                                 str +='<a href="html/Immediate_investment.html?id='+v.lenging_id+'&li='+v.lenging_interest+'&ke='+ke+'&money='+v.lenging_money+'&uname='+v.user_account+'" class="lijitoubiaocx_f">立即借款</a>';
                        });
                      $('#hou').after(str);
                      $('#desc').html(ta);
@@ -165,16 +168,17 @@ $(".mask_f_b").click(function(){
                 data:{
                     "id":ur
                 },
+
                 success: function(data){
                     var str='';
-                            $.each(data.data,function(k,v){
-                                str +='<div class="huankdxy_f"><table frame="hsides" rules="groups" border="1">';
+                    str +='<div class="huankdxy_f"><table frame="hsides" rules="groups" border="1">';
 
-                                str +='<tbody><tr><th>投标人</th><th>投标金额</th><th>投标方式</th><th>投标时间</th></tr>';
+                    str +='<tbody><tr><th>投标人</th><th>投标金额</th><th>投标方式</th><th>投标时间</th></tr>';
+                            $.each(data.data,function(k,v){
                                 str +='<tr><td>'+v.name+'</td><td><font style=" font-size:10px">￥</font>'+v.loan_money+'</td>';
                                 str +='<td>手动</td><td>'+v.time+'</td></tr>';
-                                str +='</tbody></table></div></div>';
                             });
+                    str +='</tbody></table></div></div>';
                     $('#tou').html(str);
                 },
                 error: function(){
