@@ -48,7 +48,7 @@ td{
                 <input type="text" style="width:34%;height:34px;border:1px solid #ccc;float:left;margin-top:19px;margin-right:15px;" id="period"><em>月</em>
             </p>
             <p>
-                <span>月利率：</span>
+                <span>年利率：</span>
                 <input type="text" style="width:34%;height:34px;border:1px solid #ccc;float:left;margin-top:19px;margin-right:15px;" id="rate"><em>%</em>
             </p>
             <p>
@@ -68,8 +68,8 @@ td{
 <div class="tancud_t" >
     <!--借款计算器-->
     <div class="tancud_t_2" style="width:100%;height:84%;overflow:scroll">
-        <p><span style="width:40%;height:36px;margin-right:10px;">预计本息收益(单位:元)：</span><em id='ben_xi'>0.00</em></p>
-        <p><span style="width:40%;height:36px;margin-right:10px;">预计利息收益(单位:元)：</span><em id='li_xi'>0.00</em></p>  
+        <p><span style="width:40%;height:36px;margin-right:10px;">预计本息收益(元)：</span><em id='ben_xi'></em></p>
+        <p><span style="width:40%;height:36px;margin-right:10px;">预计利息收益(元)：</span><em id='li_xi'></em></p>  
         <center>
             <div id='result' >
 
@@ -101,25 +101,6 @@ $(".tuichu_t").click(function(){
     $(".tancud_t,.tancud_t_1,.tancud_t_2").css({display:"none"})
     })              
 </script>
-<!--底部导航栏-->
-<div class="footerdhl_f">
-    <a href="index.html">
-        <b class="movek_f"><img src="image/zhuye.png"/></b>
-        <p>首页</p>
-    </a>
-    <a href="html/Investment_list.html">
-        <b><img src="image/touzi.png"/></b>
-        <p>借款</p>
-    </a>
-    <a href="html/user.html">
-        <b><img src="image/grzx.png"/></b>
-        <p>账户</p>
-    </a>
-    <a href="html/more.html">
-        <b><img src="image/mores.png"/></b>
-        <p>更多</p>
-    </a>
-</div>
 </body>
 </html>
 <script type="text/javascript">
