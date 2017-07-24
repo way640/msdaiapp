@@ -53,6 +53,10 @@
                         var userID = window.parent.token.value;
                         window.parent.token.value = data.data.token;
                         window.parent.J_iframe.src = 'index_index.html';
+                        window.parent.f1.className = 'movek_f';
+                        window.parent.f2.setAttribute('class','');
+                        window.parent.f3.setAttribute('class','');
+                        window.parent.f4.setAttribute('class','');
                     }else {
                         alert(data.msg)
                     }
