@@ -22,32 +22,32 @@
 <!--2占固定定位的块-->
 <div class="occupy_f2" id="hou"></div>
 <!--内容-->
-<div class="zslgxzx_f">
-	<div class="zslgxzx_f_in">
-    	<ul>
-        	<li class="addys_f3" id="loan">放款人信息</li>
-            <li id="lan">投标记录</li>
-        </ul>
-    </div>
-</div>
-<div class="xsiqy_f">
-    <!--包2-->
-    <div class="xsiqy_f_in">
-        <!--借入描述-->
-        <div class="xsiqy_f_in_1" id="desc">
+<!--<div class="zslgxzx_f">-->
+	<!--<div class="zslgxzx_f_in">-->
+    	<!--<ul>-->
+        	<!--<li class="addys_f3" id="loan">放款人信息</li>-->
+            <!--<li id="lan">投标记录</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="xsiqy_f">-->
+    <!--&lt;!&ndash;包2&ndash;&gt;-->
+    <!--<div class="xsiqy_f_in">-->
+        <!--&lt;!&ndash;借入描述&ndash;&gt;-->
+        <!--<div class="xsiqy_f_in_1" id="desc">-->
             <!--<div class="wnzims_f">-->
                 <!--<dl>-->
                     <!--<dt>借款人信息</dt>-->
                     <!--<dd>1.姓名：王** 年龄：27 籍贯：浙江江山 <br>2.借款说明：临时周转，以本人自己车辆抵押贷款25万元，一个月后归还。</dd>-->
                 <!--</dl>-->
             <!--</div>-->
-        </div>
-        <!--投标记录-->
-        <div class="xsiqy_f_in_1" id="tou">
+        <!--</div>-->
+        <!--&lt;!&ndash;投标记录&ndash;&gt;-->
+        <!--<div class="xsiqy_f_in_1" id="tou">-->
 
-        </div>
-    </div>
-</div>
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!--关于上面图片的遮罩层-->
 <div class="mask_f">
 	<!--top-->
@@ -71,7 +71,6 @@
 /*var mask_height=document.documentElement.clientHeight-84+'px';
 	var mask_img=$(".mask_f_c img").eq(djg).height();
 	$(".mask_f_c").css({height:mask_height});*/
-////////////////////////////////////////////////////////////////
 var sl=$(".tuatua_f img").length
 $(".tuatua_f img").click(function(){
 	$(".mask_f").css({display:"block"});
@@ -121,7 +120,7 @@ $(".mask_f_b").click(function(){
                        $.each(data.data,function(k,v){
                            var ke=v.lenging_money-v.lenging_borrow;
                            var bai=Math.round((ke/v.lenging_money)*100);
-                           str +='<div class="neirbg_f"><div class="neirbg_f_in"><h2>合同&nbsp;&nbsp;'+v.lenging_no+'</h2>';
+                           str +='<div class="neirbg_f"><div class="neirbg_f_in"><h2>'+v.user_account+'先生/女士放款&nbsp;&nbsp;合同号&nbsp;'+v.lenging_no+'</h2>';
                            str +='<div class="twobf_f"><ul><li>';
                            str +='<em>年化收益</em><p>'+v.lenging_interest+'</p></li>';
                            str +='<li><em>投资期限</em><p>'+v.time+'<font>个月</font></p></li></ul></div></div></div>';
@@ -135,7 +134,15 @@ $(".mask_f_b").click(function(){
                            str +='<span>标的类型</span><img src="image/biao.png"/><img src="image/biao2.png"/>';
                            str +='</li><li><span>最低借款</span><i>￥1000</i></li><li>';
                            str +='<span>分期</span><i>支持</i></li><li><span>剩余时间</span>';                           str +='<i style="color:#3DB1FA">'+v.day+'天</i></li></ul></div></div>';
-                           str +='<a href="html/Immediate_investment.html?id='+v.lenging_id+'" class="lijitoubiaocx_f">立即借款</a>';
+
+                           str +='<div class="zslgxzx_f"><div class="zslgxzx_f_in"><ul>';
+                           str +='<li class="addys_f3" id="loan">放款人信息</li><li id="lan">投标记录</li></ul></div></div>';
+                           str +='<div class="xsiqy_f"><div class="xsiqy_f_in"><div class="xsiqy_f_in_1" id="desc">';
+                           str +='<div class="wnzims_f"><dl><dt>借款人信息</dt>';
+                           str +='<dd>1.姓名：王** 年龄：27 籍贯：浙江江山 <br>2.借款说明：临时周转，以本人自己车辆抵押贷款25万元，一个月后归还。</dd></dl></div></div>';
+                           str +='<div class="xsiqy_f_in_1" id="tou"></div></div></div>';
+
+                           str +='<a href="html/Immediate_investment.html?id='+v.lenging_id+'&li='+v.lenging_interest+'&ke='+ke+'&money='+v.lenging_money+'&uname='+v.user_account+'" class="lijitoubiaocx_f">立即借款</a>';
                        });
                      $('#hou').after(str);
                },
@@ -146,42 +153,43 @@ $(".mask_f_b").click(function(){
        });
 
 
-        $("loan").delegate("ready",function(){
-            var src = window.location.href;
-            var I = src.substr(src.indexOf("?id=") + 4).length;
-            var T = src.indexOf("?id=");
-            if (0 >= T) return "";
-            if (I == src.length) return -1;
-            var ur = src.substr(src.indexOf("?id=") + 4);
+//        $("loan").delegate("ready",function(){
+//            var src = window.location.href;
+//            var I = src.substr(src.indexOf("?id=") + 4).length;
+//            var T = src.indexOf("?id=");
+//            if (0 >= T) return "";
+//            if (I == src.length) return -1;
+//            var ur = src.substr(src.indexOf("?id=") + 4);
+//
+//            var url = "http://119.23.46.11/investment/lenders";
+//            $.ajax({
+//                type: "get",
+//                async: false,
+//                url: url,
+//                dataType: "jsonp",
+//                jsonp: "callback",
+//                jsonpCallback:"data",
+//                data:{
+//                    "id":ur
+//                },
+//                success: function(data){
+//                    var str='';
+////                    $.each(data.data,function(k,v){
+//                        str +='<div class="wnzims_f"><dl><dt>放款人信息</dt>';
+//                        str +='<dd>1.姓名：王** 年龄：27  <br>2.借款说明：临时周转，以本人自己车辆抵押贷款25万元，一个月后归还。</dd>';
+//                        str  +='</dl></div></div>';
+////                    });
+//                    $('#desc').html(str);
+//                },
+//                error: function(){
+//                    alert('fail');
+//                }
+//            });
+//        });
 
-            var url = "http://119.23.46.11/investment/lenders";
-            $.ajax({
-                type: "get",
-                async: false,
-                url: url,
-                dataType: "jsonp",
-                jsonp: "callback",
-                jsonpCallback:"data",
-                data:{
-                    "id":ur
-                },
-                success: function(data){
-                    var str='';
-//                    $.each(data.data,function(k,v){
-                        str +='<div class="wnzims_f"><dl><dt>放款人信息</dt>';
-                        str +='<dd>1.姓名：王** 年龄：27  <br>2.借款说明：临时周转，以本人自己车辆抵押贷款25万元，一个月后归还。</dd>';
-                        str  +='</dl></div></div>';
-//                    });
-                    $('#desc').html(str);
-                },
-                error: function(){
-                    alert('fail');
-                }
-            });
-        });
 
     //投标记录
-        $("#lan").click(function(){
+        $("#lan").on("click",function(){
             var src = window.location.href;
             var I = src.substr(src.indexOf("?id=") + 4).length;
             var T = src.indexOf("?id=");
