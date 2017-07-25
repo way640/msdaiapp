@@ -19,7 +19,7 @@
 <div class="top">
 	<div class="box">
         <a href="javascript:history.go(-1)" class="return"><img src="image/return.png"></a>
-        注册    
+        忘记密码    
     </div>
 </div>
 
@@ -77,14 +77,14 @@ $(function(){
       </div>
     </div>
         <div class="lo_1 lo_2">
-        	<span>密码</span>
+        	<span>新密码</span>
             <input type="text" id="pass" size="60" maxlength="60" style="color:#ccc" value="请输入密码" onfocus="if(this.value=='请输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#ccc';}">
         </div>
         <div class="lo_1 lo_2">
         	<span>确认密码</span>
             <input type="text" id="o_pass" size="60" maxlength="60" style="color:#ccc" value="请再一次输入密码" onfocus="if(this.value=='请再一次输入密码'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='请再一次输入密码'){this.value='请再一次输入密码';this.style.color='#ccc';}">
         </div>
-        <a href="javascript:void(0);" class="lo_login">注册</a>
+        <a href="javascript:void(0);" class="lo_login">修改密码</a>
     </div>
 </div>
 
@@ -93,7 +93,7 @@ $(function(){
     $(function(){
         $('.lo_login').click(function(){
             $.ajax({
-                url:'http://119.23.46.11/user/applogindo',
+                url:'http://119.23.46.11/user/appforget',
                 type:'GET',
                 data: {
                     address: $("#address").val(),
@@ -105,6 +105,7 @@ $(function(){
                 dataType:'json',
                 success:function(data){
                   if(data.status == 1){
+                        alert('修改成功');
                         window.parent.J_iframe.src = 'html/login.html';
                   }else{
                      alert(data.msg)

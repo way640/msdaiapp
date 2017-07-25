@@ -8,8 +8,6 @@
 <link href="css/home.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="css/xinfugai.css">
 <link href="css/css.css" rel="stylesheet" type="text/css" media="all" />
-<!-- <link rel="stylesheet" type="text/css" href="css/layer.css"> -->
-<!-- <script type="text/javascript" src="js/layer.js" ></script> -->
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 </head>
@@ -171,8 +169,8 @@ function debx(amount, rate, period) {
     
     var total_amount = parseFloat((month_total*period).toFixed(2));
     var total_interest = parseFloat((total_amount-amount).toFixed(2));
-    total_amount = (total_amount == null || total_amount == '' || total_amount == 0) ? '0.00' : total_amount+'0.00';
-    total_interest = (total_interest == null || total_interest == '' || total_interest == 0) ? '0.00' : total_interest+'0.00';
+    total_amount = (total_amount == null || total_amount == '' || total_amount == 0) ? '0.00' : total_amount;
+    total_interest = (total_interest == null || total_interest == '' || total_interest == 0) ? '0.00' : total_interest;
     
     $("#ben_xi").html(formatMoney(total_amount.toString()));
     $("#li_xi").html(formatMoney(total_interest.toString()));
