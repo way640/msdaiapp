@@ -67,10 +67,11 @@
 		<input type="text" value="" placeholder="借贷金额/元" required onkeyup='this.value=this.value.replace(/\D/gi,"")' id="jie">
     </div>
 </div>
+
 <!--到款账户-->
 <div class="amount_f" style="display: none" id="dao">
     <div class="amount_f_in">
-        <fon style="font-size: 8px; color: #7a869d">您所贷金额会存入您的余额中</fon><br>
+        <fon style="font-size: 8px; color: #7a869d">您借贷的金额会存入您的余额中</fon><br>
     </div>
 </div>
 <div style="display: none;" id="ti">
@@ -105,6 +106,7 @@
     var money=GetQueryString("money");
     var id=GetQueryString("id");
     var uname=GetQueryString("uname");
+    var inte=GetQueryString("inte");
 
 
     jQuery(document).ready(function(){
@@ -126,14 +128,23 @@
         var jie=$('#jie').val();
         var ll=(jie*(li/100)).toFixed(2);
         var cha=jie-ke;
+        var int=inte*10;
 
         if(cha<=0)
             {
                 if(jie!=0)
                     {
-                        $('#dao').show();
-                        $('#ti').show();
-                        $('#xi').html(ll);
+                        if(jie>int)
+                            {
+                                alert('您的可借额度为'+int);
+                                $('#jie').val('');
+                            }
+                        else if(jie<=int)
+                            {
+                                $('#dao').show();
+                                $('#ti').show();
+                                $('#xi').html(ll);
+                            }
                     }
                 else if (jie=='')
                     {
@@ -158,6 +169,8 @@
             }
 
     });
+
+
 
     //借款条例
     $('#ra').click(function () {
